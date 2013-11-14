@@ -83,10 +83,12 @@ PlaybookGenerator.prototype.app = function app() {
   this.copy('Gruntfile.js', 'Gruntfile.js');
   this.copy('bowerrc', '.bowerrc');
   this.copy('csslintrc', '.csslintrc');
+  this.copy('gitignore', '.gitignore');
   this.template('config.yml', '_config.yml');
   this.template('_config.build.yml', '_config.build.yml');
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
+  this.template('_README.MD', 'README.md');
 };
 
 PlaybookGenerator.prototype.projectfiles = function projectfiles() {

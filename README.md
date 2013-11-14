@@ -32,7 +32,7 @@ yo playbook
 grunt server
 ````
 
-### Build for Production
+### Check, Test & Build for Production
 ````bash
-grunt build
+grunt
 ````
