@@ -1,6 +1,6 @@
 # Playbook
 
-A boilerplate template with base styles and stylesheet structure to allow for quick front end project spin up. This template is setup to utilize [Sass](http://sass-lang.com), [CoffeeScript](http://coffeescript.org), [Bourbon](http://bourbon.io) & [Neat](http://neat.bourbon.io).
+A boilerplate template with base styles and stylesheet structure to allow for quick front end project spin up. The static site is built and served using [Jekyll](http://jekyllrb.com/). [Grunt](http://gruntjs.com/) is used to compile [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org). [Bower](http://bower.io/) is used for dependencies. Playbook includes [Bourbon](http://bourbon.io) and [Neat](http://neat.bourbon.io).
 
 ## Get Started
 ### Prerequisites
@@ -11,7 +11,7 @@ If you do not have [Node.js](http://nodejs.org/), [Ruby](https://www.ruby-lang.o
 - [Install Bundler.](http://bundler.io/)
 
 ### Install Playbook
-If you have already installed Playbook skip to [usage](https://github.com/centresource/generator-almanac#usage). First clone the repository using the clone URL found on this page, then:
+If you have already installed Playbook skip to [usage](#usage). First clone the repository using the clone URL found on this page, then:
 
 ````bash
 cd path/to/generator-playbook
