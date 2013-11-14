@@ -11,7 +11,7 @@ If you do not have [Node.js](http://nodejs.org/), [Ruby](https://www.ruby-lang.o
 - [Install Bundler.](http://bundler.io/)
 
 ### Install Playbook
-If you have already installed Playbook skip to [usage](#usage). First clone the repository using the clone URL found on this page, then:
+Clone the repository using the clone URL found on this page, then:
 
 ````bash
 cd path/to/generator-playbook
