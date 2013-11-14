@@ -1,0 +1,48 @@
+/**** Lists ****/
+dl {
+  margin-bottom: $base-line-height;
+}
+
+dt,
+dd {
+  line-height: $base-line-height;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: $base-line-height / 2;
+}
+
+.dl-horizontal {
+  dt {
+    clear: left;
+    float: left;
+    text-align: right;
+    width: 120px;
+    @include text-overflow();
+  }
+
+  dd {
+    margin-left: 130px;
+  }
+}
+
+%list-horizontal {
+  margin: 0;
+
+  > li {
+    display: inline-block;
+  }
+}
+
+%list-unstyled {
+  margin: 0;
+  padding: 0;
+
+  > li {
+    list-style: none;
+  }
+}

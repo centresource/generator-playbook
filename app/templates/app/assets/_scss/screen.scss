@@ -1,0 +1,29 @@
+/*
+ * This file should only comprise of @imports.
+ * Place all styles in appropriately named files.
+ * See the ToC in _application.scss
+ */
+
+// Utilities
+@import "base/mixins";
+@import "bourbon/app/assets/stylesheets/bourbon";
+@import "base/variables";
+@import "neat/app/assets/stylesheets/neat";
+@import "base/utilities";
+
+// Base
+@import "base/fonts";
+@import "base/typography";
+@import "base/buttons";
+@import "base/forms";
+@import "base/lists";
+@import "base/navigation";
+@import "base/tables";
+@import "base/library";
+@import "base/application";
+
+// Modules
+// @import "modules/modal";
+
+// Pages
+// @import "pages/home";

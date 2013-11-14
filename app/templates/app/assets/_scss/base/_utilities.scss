@@ -1,0 +1,62 @@
+/**** Utilities ****/
+.clearfix:after {
+  clear: both; content: "."; display: block; height: 0; visibility: hidden;
+}
+
+.clearfix {
+  display: block;
+}
+
+.selfclear {
+  clear: both;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.valign-top {
+  vertical-align: top;
+}
+
+.valign-middle {
+  vertical-align: middle;
+}
+
+.valign-bottom {
+  vertical-align: bottom;
+}
+
+.relative {
+  position: relative;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.mobile-hide {
+  @include media($mobile-only) {
+    display: none;
+  }
+}

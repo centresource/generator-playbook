@@ -1,0 +1,82 @@
+/**** Variables ****/
+@import "neat/app/assets/stylesheets/neat-helpers";
+
+//**** Globals ****
+$base-value: 12;
+$base-value-tablet: 13;
+
+
+
+//**** Typography ****
+$base-font-size:         #{$base-value + "px"};
+$base-font-size-tablet:  #{$base-value-tablet + "px"};
+$base-line-height:       1.5;
+
+$serif-font-family:      Georgia, Times, serif;
+$sans-serif-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base-font-family:       $sans-serif-font-family;
+$header-font-family:     $base-font-family;
+
+
+
+//**** Breakpoints (mobile first) ****
+$desktop:     min-width 850px;
+$tablet:      min-width 700px;
+$tablet-only: min-width 700px max-width 849px;
+$mobile-only: max-width 699px; // Avoid using this
+
+
+
+//**** Neat Grid ****
+$max-width: 60.45em;               // Max-width of the outer container
+// $default-feature: min-width;    // Default @media feature for the breakpoint() mixin
+// $column: golden-ratio(1em, 3);  // Column width
+// $gutter: golden-ratio(1em, 1);  // Gutter between each two columns
+// $grid-columns: 12;              // Total number of columns in the grid
+// $border-box-sizing: true;       // Makes all elements have a border-box layout
+
+// $visual-grid: true;
+// $visual-grid-color: red;
+// $visual-grid-index: front;
+// $visual-grid-opacity: 0.05;
+
+
+
+//**** Grays ****
+$black:                 #000;
+$gray-darker:           #222;
+$gray-dark:             #333;
+$gray:                  #555;
+$gray-light:            #999;
+$gray-lighter:          #eee;
+$white:                 #fff;
+
+
+
+//**** Colors ****
+$blue:                  #002447;
+$green:                 #46a546;
+$red:                   #9d261d;
+$yellow:                #fe9800;
+$orange:                #f89406;
+$pink:                  #c3325f;
+$purple:                #7a43b6;
+
+
+
+//**** Borders ****
+$base-border-color: $gray;
+$base-border-radius: 6px;
+
+
+
+//**** Selectors ****
+$anchors-list: 'a',
+               'a:visited',
+               'a:hover',
+               'a:active';
+$anchors: ();
+
+@each $anchor in $anchors-list {
+  $anchors: append($anchors, unquote($anchor), comma);
+}

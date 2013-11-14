@@ -1,0 +1,171 @@
+/**** Mixins ****/
+
+// Apply CSS animation
+@mixin animate($animation: fadeIn, $duration: .75s, $delay: .5s, $timing-function: ease, $fill-mode: both) {
+  -webkit-animation-duration: $duration;
+  -webkit-animation-delay: $delay;
+  -webkit-animation-timing-function: $timing-function;
+  -webkit-animation-fill-mode: $fill-mode;
+  -webkit-animation-name: $animation;
+     -moz-animation-duration: $duration;
+     -moz-animation-delay: $delay;
+     -moz-animation-timing-function: $timing-function;
+     -moz-animation-fill-mode: $fill-mode;
+     -moz-animation-name: $animation;
+          animation-duration: $duration;
+          animation-delay: $delay;
+          animation-timing-function: $timing-function;
+          animation-fill-mode: $fill-mode;
+          animation-name: $animation;
+}
+
+
+// Alter CSS animate duration
+@mixin animation-duration($duration: 0.2s) {
+  -webkit-animation-duration: $duration;
+     -moz-animation-duration: $duration;
+      -ms-animation-duration: $duration;
+       -o-animation-duration: $duration;
+          animation-duration: $duration;
+}
+
+// Accept all color values for background opacity
+@mixin background-opacity($color, $opacity) {
+  background-color: $color;
+  background-color: rgba($color, $opacity);
+}
+
+// Curved CSS shadows
+// ---------------------------------------------------
+// Parent of element with shadow needs the following
+// attributes if you desire a background attribute
+// on the parent:
+//  position: relative;
+//  z-index: 1;
+@mixin curved-shadow($direction){
+  position: relative;
+
+  &:before {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+    content: "";
+    position: absolute;
+    z-index: -2;
+
+    @if $direction == left {
+      bottom: 10px;
+      border-radius: 10px / 100px;
+      height: 92%;
+      left: 0;
+      right: 50%;
+      top: 4%;
+    } @else if $direction == right {
+      border-radius:10px / 100px;
+      bottom: 10px;
+      height: 92%;
+      left: 50%;
+      right: 0;
+      top: 4%;
+    } @else if $direction == left-right {
+      border-radius:10px / 100px;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      top: 10px;
+    } @else if $direction == top {
+      border-radius:100px / 10px;
+      bottom: 50%;
+      left: 10px;
+      right: 10px;
+      top: 0;
+    } @else if $direction == bottom {
+      border-radius:100px / 10px;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      top: 50%;
+    } @else if $direction == top-bottom {
+      border-radius:100px / 10px;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      top: 0;
+    }
+  }
+}
+
+// Add styles to button variants
+@mixin button-variant($color, $background, $border) {
+  background-color: $background;
+  border-color: $border;
+  color: $color;
+
+  &:hover,
+  &:focus,
+  &:visited,
+  &:active,
+  &.active {
+    background-color: $background;
+    border-color: $border;
+    color: $color;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+  }
+
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:visited,
+    &:active,
+    &.active {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+}
+
+// Add styles to button variants
+@mixin link-variant($base-color, $hover-color: darken($base-color, 10%)) {
+  color: $base-color;
+  text-decoration: none;
+
+  &:visited {
+    color: $base-color;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $hover-color;
+  }
+}
+
+// Mask image prefix builder
+@mixin mask-image($image) {
+  @include prefixer(mask-image, url($image), webkit moz spec)
+}
+
+// Accepts styling for placeholder content
+@mixin placeholder {
+  &.placeholder { @content }
+  &:-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+}
+
+// Accepts styling for selected content
+@mixin selection {
+  .selection { @content }
+  ::selection { @content }
+  ::-moz-selection { @content }
+}
+
+// Text overflow (Requires inline-block or block for proper styling)
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
