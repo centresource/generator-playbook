@@ -9,6 +9,7 @@ If you do not have [Node.js](http://nodejs.org/), [Ruby](https://www.ruby-lang.o
 - [Install Node & npm.](http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/)
 - [Install Ruby with rvm.](https://rvm.io/rvm/install)
 - [Install Bundler.](http://bundler.io/)
+- [Install Yeoman](http://yeoman.io/)
 
 ### Install Playbook
 Clone the repository using the clone URL found on this page, then:
