@@ -28,6 +28,10 @@ rvm use 2.0.0@generator-playbook --create --ruby-version
 yo playbook
 ````
 
+Should you run into an error such as `command yo not found` it is most
+likely a path issue cause by a Homebrew install of Node. Please refer
+to the top answer on this [stack overflow question](http://stackoverflow.com/questions/15846076/command-not-found-after-installation).
+
 ### View the Site Locally
 ````bash
 grunt server
