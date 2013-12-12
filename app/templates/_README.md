@@ -3,10 +3,11 @@
 [Describe project.]
 
 ## Project Setup
+This project utilizes Playbook, reference Playbook's [setup guide](https://github.com/centresource/generator-playbook#get-started).
 
-````bash
-[Describe project setup.]
-````
+1. Clone this repository
+2. `npm install`
+3. `bower install`
 
 ## Usage
 
