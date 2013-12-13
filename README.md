@@ -4,12 +4,12 @@ A boilerplate template with base styles and stylesheet structure to allow for qu
 
 ## Get Started
 ### Prerequisites
-If you do not have [Node.js](http://nodejs.org/), [Ruby](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed, you must do that first:
+If you do not have [Node.js](http://nodejs.org/), [Ruby 2.0+](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed, you must do that first:
 
-- Install Node. ([I recommend using Homebrew](http://brew.sh/))
-- [Install Ruby with rvm.](https://rvm.io/rvm/install)
-- [Install Bundler.](http://bundler.io/)
-- [Install Yeoman](http://yeoman.io/)
+- Node.js ([I recommend using Homebrew](http://brew.sh/))
+- Ruby 2.0+ ([I recommend using rvm](https://rvm.io/rvm/install))
+- [Bundler](http://bundler.io/)
+- [Yeoman](http://yeoman.io/)
 
 ### Install Playbook
 Clone the repository using the clone URL found on this page, then:
