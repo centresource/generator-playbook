@@ -6,8 +6,8 @@ A boilerplate template with base styles and stylesheet structure to allow for qu
 ### Prerequisites
 If you do not have [Node.js](http://nodejs.org/), [Ruby 2.0+](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed, you must do that first:
 
-- Node.js ([I recommend using Homebrew](http://brew.sh/))
-- Ruby 2.0+ ([I recommend using rvm](https://rvm.io/rvm/install))
+- [Node.js](http://davidcalhoun.me/2013/12/16/developer-tools-homebrew/)
+- [Ruby 2.0+](https://rvm.io/rvm/install)
 - [Bundler](http://bundler.io/)
 - [Yeoman](http://yeoman.io/)
 
