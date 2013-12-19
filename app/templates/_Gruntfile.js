@@ -321,9 +321,7 @@ module.exports = function (grunt) {
         verbose: true
       },
       check: {
-        src: ['<%%= yeoman.app %>/assets/css/**/*.css',
-              '<%%= yeoman.app %>/assets/_scss/*.scss'
-        ]
+        src: ['.tmp/assets/css/screen.css']
       }
     },
     csslint: {
@@ -331,10 +329,7 @@ module.exports = function (grunt) {
         csslintrc: '.csslintrc'
       },
       check: {
-        src: [
-          '<%%= yeoman.app %>}/assets/css/**/*.css',
-          '<%%= yeoman.app %>}/assets/_scss/*.scss'
-        ]
+        src: ['.tmp/assets/css/screen.css']
       }
     },
     concurrent: {
@@ -368,10 +363,10 @@ module.exports = function (grunt) {
   grunt.registerTask('check', [
     'clean:server',
     'jekyll:check',
-    'sass:server',<% if (jsPre === 'coffeescript') { %>
+    'sass:dist',<% if (jsPre === 'coffeescript') { %>
     'coffee:dist',<% } %>
     'jshint:all',
-    // 'csscss:check',
+    'csscss:check',
     'csslint:check'
   ]);
 
