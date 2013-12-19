@@ -2,9 +2,10 @@
   "name": "<%= _.slugify(projectName) %>",
   "version": "0.0.0",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-coffee": "~0.7.0",
+    "grunt": "~0.4.1",<% if (deploy) { %>
+    "grunt-build-control": "~0.1.2",<% } %>
+    "grunt-contrib-clean": "~0.5.0",<% if (jsPre === 'coffeescript') { %>
+    "grunt-contrib-coffee": "~0.7.0",<% } %>
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
