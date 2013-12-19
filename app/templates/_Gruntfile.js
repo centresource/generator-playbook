@@ -4,8 +4,8 @@
 // Directory reference:
 //   css: assets/css
 //   sass: assets/_scss
-//   javascript: assets/js
-//   coffeescript: assets/_coffee
+//   javascript: assets/js<% if (jsPre === 'coffeescript') { %>
+//   coffeescript: assets/_coffee<% } %>
 //   images: assets/img
 //   fonts: assets/fonts
 
@@ -23,34 +23,34 @@ module.exports = function (grunt) {
     },
     watch: {
       sass: {
-        files: ['<%= yeoman.app %>/assets/_scss/**/*.{scss,sass}'],
+        files: ['<%%= yeoman.app %>/assets/_scss/**/*.{scss,sass}'],
         tasks: ['sass:server']
-      },
+      },<% if (jsPre === 'coffeescript') { %>
       coffee: {
-        files: ['<%= yeoman.app %>/assets/_coffee/**/*.coffee'],
+        files: ['<%%= yeoman.app %>/assets/_coffee/**/*.coffee'],
         tasks: ['coffee:dist']
       },
       coffeeTest: {
         files: ['test/spec/**/*.coffee'],
         tasks: ['coffee:test']
-      },
+      },<% } %>
       jekyll: {
         files: [
-          '<%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
+          '<%%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
           '_config.yml',
-          '!<%= yeoman.app %>/_bower_components'
+          '!<%%= yeoman.app %>/_bower_components'
         ],
         tasks: ['jekyll:server']
       },
       livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          livereload: '<%%= connect.options.livereload %>'
         },
         files: [
           '.jekyll/**/*.html',
-          '{.tmp,<%= yeoman.app %>}/assets/css/**/*.css',
-          '{.tmp,<%= yeoman.app %>}/<%= js %>/**/*.js',
-          '<%= yeoman.app %>/assets/img/**/*.{gif,jpg,jpeg,png,svg,webp}'
+          '{.tmp,<%%= yeoman.app %>}/assets/css/**/*.css',
+          '{.tmp,<%%= yeoman.app %>}/<%%= js %>/**/*.js',
+          '<%%= yeoman.app %>/assets/img/**/*.{gif,jpg,jpeg,png,svg,webp}'
         ]
       }
     },
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
           base: [
             '.tmp',
             '.jekyll',
-            '<%= yeoman.app %>'
+            '<%%= yeoman.app %>'
           ]
         }
       },
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         options: {
           open: true,
           base: [
-            '<%= yeoman.dist %>'
+            '<%%= yeoman.dist %>'
           ]
         }
       },
@@ -85,7 +85,7 @@ module.exports = function (grunt) {
             '.tmp',
             '.jekyll',
             'test',
-            '<%= yeoman.app %>'
+            '<%%= yeoman.app %>'
           ]
         }
       }
@@ -96,11 +96,11 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/*',
+            '<%%= yeoman.dist %>/*',
             // Running Jekyll also cleans the target directory.  Exclude any
             // non-standard `keep_files` here (e.g., the generated files
             // directory from Jekyll Picture Tag).
-            '!<%= yeoman.dist %>/.git*'
+            '!<%%= yeoman.dist %>/.git*'
           ]
         }]
       },
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/assets/_scss',
+          cwd: '<%%= yeoman.app %>/assets/_scss',
           src: '*.{scss,sass}',
           dest: '.tmp/assets/css',
           ext: '.css'
@@ -132,18 +132,18 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/assets/_scss',
+          cwd: '<%%= yeoman.app %>/assets/_scss',
           src: '*.{scss,sass}',
           dest: '.tmp/assets/css',
           ext: '.css'
         }]
       }
-    },
+    },<% if (jsPre === 'coffeescript') { %>
     coffee: {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/assets/_coffee',
+          cwd: '<%%= yeoman.app %>/assets/_coffee',
           src: '**/*.coffee',
           dest: '.tmp/assets/js',
           ext: '.js'
@@ -158,16 +158,16 @@ module.exports = function (grunt) {
           ext: '.js'
         }]
       }
-    },
+    },<% } %>
     jekyll: {
       options: {
         bundleExec: true,
         config: '_config.yml,_config.build.yml',
-        src: '<%= yeoman.app %>'
+        src: '<%%= yeoman.app %>'
       },
       dist: {
         options: {
-          dest: '<%= yeoman.dist %>'
+          dest: '<%%= yeoman.dist %>'
         }
       },
       server: {
@@ -187,17 +187,17 @@ module.exports = function (grunt) {
     // page (hackery!) and point this task there.
     useminPrepare: {
       options: {
-        dest: '<%= yeoman.dist %>'
+        dest: '<%%= yeoman.dist %>'
       },
-      html: '<%= yeoman.dist %>/index.html'
+      html: '<%%= yeoman.dist %>/index.html'
     },
     usemin: {
       options: {
-        basedir: '<%= yeoman.dist %>',
-        dirs: ['<%= yeoman.dist %>/**/*']
+        basedir: '<%%= yeoman.dist %>',
+        dirs: ['<%%= yeoman.dist %>/**/*']
       },
-      html: ['<%= yeoman.dist %>/**/*.html'],
-      css: ['<%= yeoman.dist %>/assets/css/**/*.css']
+      html: ['<%%= yeoman.dist %>/**/*.html'],
+      css: ['<%%= yeoman.dist %>/assets/css/**/*.css']
     },
     htmlmin: {
       dist: {
@@ -209,9 +209,9 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>',
+          cwd: '<%%= yeoman.dist %>',
           src: '**/*.html',
-          dest: '<%= yeoman.dist %>'
+          dest: '<%%= yeoman.dist %>'
         }]
       }
     },
@@ -234,9 +234,9 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>',
+          cwd: '<%%= yeoman.dist %>',
           src: '**/*.{jpg,jpeg,png}',
-          dest: '<%= yeoman.dist %>'
+          dest: '<%%= yeoman.dist %>'
         }]
       }
     },
@@ -244,9 +244,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>',
+          cwd: '<%%= yeoman.dist %>',
           src: '**/*.svg',
-          dest: '<%= yeoman.dist %>'
+          dest: '<%%= yeoman.dist %>'
         }]
       }
     },
@@ -255,7 +255,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%= yeoman.app %>',
+          cwd: '<%%= yeoman.app %>',
           src: [
             // Jekyll processes and moves HTML and text files
             // Usemin moves CSS and javascript inside of Usemin blocks
@@ -266,10 +266,10 @@ module.exports = function (grunt) {
             '!**/_*{,/**}'
             // Explicitly add any files your site needs for distribution here
             //'_bower_components/jquery/jquery.js',
-            //'favicon.ico',
-            //'apple-touch*.png'
+            // 'favicon.ico',
+            // 'apple-touch*.png'
           ],
-          dest: '<%= yeoman.dist %>'
+          dest: '<%%= yeoman.dist %>'
         }]
       }
     },
@@ -280,23 +280,35 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/assets/js/**/*.js',
-            '<%= yeoman.dist %>/assets/css/**/*.css',
-            '<%= yeoman.dist %>/assets/img/**/*.{gif,jpg,jpeg,png,svg,webp}',
-            '<%= yeoman.dist %>/assets/fonts/**/*.{eot*,otf,svg,ttf,woff}'
+            '<%%= yeoman.dist %>/assets/js/**/*.js',
+            '<%%= yeoman.dist %>/assets/css/**/*.css',
+            '<%%= yeoman.dist %>/assets/img/**/*.{gif,jpg,jpeg,png,svg,webp}',
+            '<%%= yeoman.dist %>/assets/fonts/**/*.{eot*,otf,svg,ttf,woff}'
           ]
         }
       }
-    },
+    },<% if (deploy) { %>
+    buildcontrol: {
+      dist: {
+        options: {
+          dir: 'dist',
+          commit: true,
+          push: true,
+          message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%',
+          remote: '<%= deployRemote %>',
+          branch: '<%= deployBranch %>'
+        }
+      }
+    },<% } %>
     jshint: {
       options: {
         jshintrc: '.jshintrc'
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/assets/js/**/*.js',
+        '<%%= yeoman.app %>/assets/js/**/*.js',
         'test/spec/**/*.js',
-        '!<%= yeoman.app %>/assets/js/vendor/**/*'
+        '!<%%= yeoman.app %>/assets/js/vendor/**/*'
       ]
     },
     csscss: {
@@ -309,8 +321,8 @@ module.exports = function (grunt) {
         verbose: true
       },
       check: {
-        src: ['<%= yeoman.app %>/assets/css/**/*.css',
-              '<%= yeoman.app %>/assets/_scss/*.scss'
+        src: ['<%%= yeoman.app %>/assets/css/**/*.css',
+              '<%%= yeoman.app %>/assets/_scss/*.scss'
         ]
       }
     },
@@ -320,20 +332,20 @@ module.exports = function (grunt) {
       },
       check: {
         src: [
-          '<%= yeoman.app %>}/assets/css/**/*.css',
-          '<%= yeoman.app %>}/assets/_scss/*.scss'
+          '<%%= yeoman.app %>}/assets/css/**/*.css',
+          '<%%= yeoman.app %>}/assets/_scss/*.scss'
         ]
       }
     },
     concurrent: {
       server: [
-        'sass:server',
-        'coffee:dist',
+        'sass:server',<% if (jsPre === 'coffeescript') { %>
+        'coffee:dist',<% } %>
         'jekyll:server'
       ],
       dist: [
-        'sass:dist',
-        'coffee:dist',
+        'sass:dist',<% if (jsPre === 'coffeescript') { %>
+        'coffee:dist',<% } %>
         'copy:dist'
       ]
     }
@@ -356,8 +368,8 @@ module.exports = function (grunt) {
   grunt.registerTask('check', [
     'clean:server',
     'jekyll:check',
-    'sass:server',
-    'coffee:dist',
+    'sass:server',<% if (jsPre === 'coffeescript') { %>
+    'coffee:dist',<% } %>
     'jshint:all',
     // 'csscss:check',
     'csslint:check'
@@ -384,7 +396,14 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin'
-  ]);
+  ]);<% if (deploy) { %>
+
+  grunt.registerTask('deploy', [
+    'check',
+    'test',
+    'build',
+    'buildcontrol'
+  ]);<% } %>
 
   grunt.registerTask('default', [
     'check',
