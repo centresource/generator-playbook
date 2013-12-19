@@ -3,11 +3,11 @@
 
 # TEAM
 
-  David Calhoun -- Site Maker --  http://twitter.com/dcalhoun
+  <name> -- <role> --  <twitter>
 
 # THANKS
 
-    <name>
+  <name>
 
 # TECHNOLOGY COLOPHON
 
