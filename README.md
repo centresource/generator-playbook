@@ -34,9 +34,12 @@ yo playbook
 - Check, Test & Build for Production: `grunt`
 - View the Site Locally: `grunt server`
 - Build Production: `grunt build`
+- Deploy: `grunt deploy`
+- Run tests: `grunt test`
+- Check source: `grunt check`
 
 ### Deployment
-During the generation of your Playbook, you have the option of including [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control). You can use this tool to deploy to [GitHub Pages](http://pages.github.com/) or [Heroku](http://heroku.com).
+During the generation of your Playbook, you have the option of including [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control). You can use this tool to deploy to [GitHub Pages](http://pages.github.com/) or [Heroku](http://heroku.com). You can deploy with the follow Grunt task:
 
 ````bash
 grunt deploy
