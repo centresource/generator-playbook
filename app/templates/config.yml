@@ -6,7 +6,7 @@
 # Use _config.build.yml to override these settings on `grunt build`.
 
 name: <%= projectName %>
-description: <%= projectName %> almanac.
+description: <%= projectName %>.
 
 author:
   name: <%= authorName %>
