@@ -21,10 +21,11 @@ npm link
 
 ## Usage
 ### Create a Site
+*If you are using rvm, I recommend creating a gemset: `rvm use 2.0.0@generator-playbook --create --ruby-version`.*
+
 ````bash
 cd path/to/desired/location/
 mkdir projectname && cd projectname
-rvm use 2.0.0@generator-playbook --create --ruby-version # optional if you are using rvm
 yo playbook
 ````
 
