@@ -31,12 +31,12 @@ yo playbook
 *Should you run into an error such as `command yo not found` it may be related to a path issue when installing Node.js via Homebrew. Please refer to the top answer on this [StackOverflow question](http://stackoverflow.com/questions/15846076/command-not-found-after-installation).*
 
 ### Grunt Tasks
-- Check, Test & Build for Production: `grunt`
-- View the Site Locally: `grunt server`
-- Build Production: `grunt build`
-- Deploy: `grunt deploy`
-- Run tests: `grunt test`
+- Check, test & build for production: `grunt`
+- Serve the site locally: `grunt server`
+- Deploy to production: `grunt deploy`
 - Check source: `grunt check`
+- Run tests: `grunt test`
+- Build for production: `grunt build`
 
 ### Deployment
 During the generation of your Playbook, you have the option of including [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control). You can use this tool to deploy to [GitHub Pages](http://pages.github.com/) or [Heroku](http://heroku.com). You can deploy with the follow Grunt task:
