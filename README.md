@@ -4,10 +4,10 @@ A boilerplate template with base styles and stylesheet structure to allow for qu
 
 ## Get Started
 ### Prerequisites
-If you do not have [Node.js](http://nodejs.org/), [Ruby 2.0+](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed, you must do that first:
+If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Ruby](https://www.ruby-lang.org/en/) `>=1.9` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
 
 - [Node.js](http://davidcalhoun.me/2013/12/16/developer-tools-homebrew/)
-- [Ruby 2.0+](https://rvm.io/rvm/install)
+- [Ruby](https://rvm.io/rvm/install)
 - [Bundler](http://bundler.io/)
 - [Yeoman](http://yeoman.io/)
 
@@ -24,7 +24,7 @@ npm link
 ````bash
 cd path/to/desired/location/
 mkdir projectname && cd projectname
-rvm use 2.0.0@generator-playbook --create --ruby-version
+rvm use 2.0.0@generator-playbook --create --ruby-version # skip if you are not using rvm
 yo playbook
 ````
 
