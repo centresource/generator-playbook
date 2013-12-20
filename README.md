@@ -12,7 +12,7 @@ If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Ruby](https://www.ru
 - [Yeoman](http://yeoman.io/)
 
 ### Install Playbook
-Clone the repository using the clone URL found on this page, then:
+Clone this repository using the clone URL found on this page. Then:
 
 ````bash
 cd path/to/generator-playbook
@@ -24,7 +24,7 @@ npm link
 ````bash
 cd path/to/desired/location/
 mkdir projectname && cd projectname
-rvm use 2.0.0@generator-playbook --create --ruby-version # skip if you are not using rvm
+rvm use 2.0.0@generator-playbook --create --ruby-version # optional if you are using rvm
 yo playbook
 ````
 
