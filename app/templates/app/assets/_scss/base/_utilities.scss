@@ -54,9 +54,3 @@
 .no-padding {
   padding: 0;
 }
-
-.mobile-hide {
-  @include media($mobile-only) {
-    display: none;
-  }
-}

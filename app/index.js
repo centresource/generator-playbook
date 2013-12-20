@@ -28,6 +28,10 @@ var PlaybookGenerator = module.exports = function PlaybookGenerator(args, option
 
   this.on('end', function () {
     this.installDependencies({ skipInstall: options['skip-install'] });
+
+    // Install Bitters
+    shelljs.cd('app/assets/_scss');
+    shelljs.exec('bitters install');
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -185,12 +189,12 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 
 PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {
   if (this.jsPre) {
-    this.mkdir('app/assets/_coffee')
+    this.mkdir('app/assets/_coffee');
   }
 
   if (this.jsPre === 'coffeescript') {
-    this.copy('conditional/coffee/.gitkeep', 'app/assets/_coffee/.gitkeep')
-    this.copy('conditional/coffee/README.md', 'app/assets/_coffee/README.md')
-    this.copy('conditional/coffee/app.coffee', 'app/assets/_coffee/app.coffee')
+    this.copy('conditional/coffee/.gitkeep', 'app/assets/_coffee/.gitkeep');
+    this.copy('conditional/coffee/README.md', 'app/assets/_coffee/README.md');
+    this.copy('conditional/coffee/app.coffee', 'app/assets/_coffee/app.coffee');
   }
 }

@@ -19,21 +19,3 @@
  * Styling for the structure of the site. If your element doesn't show up on
  * every page, it probably shouldn't be in this file.
  * -----------------------------------------------------------------------------*/
-body {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-  -webkit-font-smoothing: antialiased;
-
-  @include media($tablet) {
-    font-size: $base-font-size-tablet;
-  }
-}
-
-.header-primary {}
-
-.nav-primary {}
-
-.content-primary {}
-
-.footer-primary {}
