@@ -24,11 +24,6 @@ npm link
 ````bash
 cd path/to/desired/location/
 mkdir projectname && cd projectname
-````
-
-If you are using rvm, I recommend creating a gemset for your project prior to running `yo playbook`. Run the following within your project directory: `rvm use 2.0.0@generator-playbook --create --ruby-version`.
-
-````bash
 yo playbook
 ````
 
