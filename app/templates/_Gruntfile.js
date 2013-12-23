@@ -114,7 +114,7 @@ module.exports = function (grunt) {
         bundleExec: true,
         debugInfo: false,
         lineNumbers: false,
-        loadPath: 'app/_bower_components'
+        loadPath: '<%%= yeoman.app %>/_bower_components'
       },
       dist: {
         files: [{
@@ -314,7 +314,8 @@ module.exports = function (grunt) {
     csscss: {
       options: {
         bundleExec: true,
-        minMatch: 2,
+        minMatch: 4,
+        ignoreProperties: '-moz-appearance,-ms-appearance,-o-appearance,-webkit-appearance',
         ignoreSassMixins: false,
         colorize: true,
         shorthand: false,
