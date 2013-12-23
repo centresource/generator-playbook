@@ -37,10 +37,6 @@ util.inherits(PlaybookGenerator, yeoman.generators.Base);
 
 PlaybookGenerator.prototype.askForUser = function askForUser() {
   var cb = this.async();
-
-  // have Yeoman greet the user.
-  console.log(this.yeoman);
-
   var prompts = [
     {
       name: 'authorName',
@@ -57,6 +53,9 @@ PlaybookGenerator.prototype.askForUser = function askForUser() {
       message: 'What is the name of the project?'
     }
   ];
+
+  console.log(this.yeoman);
+  console.log(chalk.yellow('\nTell us a little about the project.') + ' →');
 
   this.prompt(prompts, function (props) {
 
@@ -76,12 +75,19 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
       type: 'list',
       message: 'JavaScript preproccesor',
       choices: ['None', 'CoffeeScript']
+    },
+    {
+      name: 'googleAnalytics',
+      type: 'confirm',
+      message: 'Include Google Analytics?'
     }
   ]
 
+  console.log(chalk.yellow('\nPreprocessors and tools.') + ' →');
+
   this.prompt(prompts, function (props) {
 
-    this.bitters = props.bitters;
+    this.googleAnalytics = props.googleAnalytics;
 
     // Multiple choice 'None' to false
     this.jsPre = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
@@ -92,7 +98,6 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 
 PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   var cb = this.async();
-
   var prompts = [
     {
       name: 'deploy',
@@ -139,6 +144,8 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
     }
   ]
 
+  console.log(chalk.yellow('\nDeployment options.') + ' →');
+
   this.prompt(prompts, function (props) {
 
     this.deploy       = props.deploy;
@@ -166,8 +173,6 @@ PlaybookGenerator.prototype.rubyDependencies = function rubyDependencies() {
 
 PlaybookGenerator.prototype.app = function app() {
   this.directory('app', 'app');
-  this.template('_app_index.md', 'app/index.md');
-
   this.copy('Gemfile', 'Gemfile');
   this.copy('bowerrc', '.bowerrc');
   this.copy('csslintrc', '.csslintrc');
@@ -183,6 +188,15 @@ PlaybookGenerator.prototype.app = function app() {
 PlaybookGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
+};
+
+PlaybookGenerator.prototype.templates = function templates() {
+  this.template('conditional/template/default.html', 'app/_layouts/default.html');
+  this.template('conditional/template/index.md', 'app/index.md');
+
+  if (this.googleAnalytics) {
+    this.copy('conditional/template/google-analytics.html', 'app/_includes/google-analytics.html');
+  };
 };
 
 PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {

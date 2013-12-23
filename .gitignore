@@ -2,3 +2,4 @@ node_modules/
 temp/
 .ruby-version
 .ruby-gemset
+**/.DS_Store

@@ -41,7 +41,7 @@
       {% include scripts-ie8.html %}
     <![endif]-->
 
-    {% include scripts.html %}
-
+    {% include scripts.html %}<% if (googleAnalytics) { %>
+    {% include google-analytics.html %}<% } %>
   </body>
 </html>
