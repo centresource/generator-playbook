@@ -1,6 +1,8 @@
 # Playbook
 
-A boilerplate template with base styles and stylesheet structure to allow for quick front end project spin up. The static site is built and served using [Jekyll](http://jekyllrb.com/). [Grunt](http://gruntjs.com/) is used to compile [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org). [Bower](http://bower.io/) is used for dependencies. Playbook includes [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) and [Bitters](http://bitters.bourbon.io/).
+Playbook is a Yeoman generator for [Jekyll](http://jekyllrb.com/) site utilizing thoughtbot's [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) and [Bitters](http://bitters.bourbon.io/) to allow for quick front end project spin up.
+
+[Grunt](http://gruntjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org). [Bower](http://bower.io/) is used for managing dependencies.
 
 ## Get Started
 ### Prerequisites
@@ -12,18 +14,13 @@ If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Ruby](https://www.ru
 - [Yeoman](http://yeoman.io/)
 
 ### Install Playbook
-Clone this repository using the clone URL found on this page. Then:
-
-````bash
-cd path/to/generator-playbook
-npm link
-````
+Playbook is installed like all other Yeoman generators: `npm install -g generator-playbook`
 
 ## Usage
 ### Create a Site
 ````bash
 cd path/to/desired/location/
-mkdir projectname && cd projectname
+mkdir project-name && cd project-name
 yo playbook
 ````
 
@@ -31,7 +28,7 @@ yo playbook
 
 ### Grunt Tasks
 - Check, test & build for production: `grunt`
-- Serve the site locally: `grunt server`
+- Serve the site locally: `grunt serve`
 - Deploy to production: `grunt deploy`
 - Check source: `grunt check`
 - Run tests: `grunt test`

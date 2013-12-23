@@ -1,21 +1,32 @@
 {
   "name": "generator-playbook",
-  "version": "0.0.0",
-  "description": "A generator for Yeoman",
+  "version": "1.0.0",
+  "description": "A Yeoman generator for a Jekyll site utilizing thoughtbot's Bourbon toolset.",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "bourbon",
+    "neat",
+    "bitters",
+    "jekyll",
+    "jekyllrb",
+    "static",
+    "front-end",
+    "web",
+    "site",
+    "sass",
+    "coffeescript"
   ],
-  "homepage": "https://github.com/dcalhoun/generator-playbook",
-  "bugs": "https://github.com/dcalhoun/generator-playbook/issues",
+  "homepage": "https://github.com/centresource/generator-playbook",
+  "bugs": "https://github.com/centresource/generator-playbook/issues",
   "author": {
     "name": "David Calhoun",
-    "email": "dpcalhoun@gmail.com",
-    "url": "https://github.com/dcalhoun"
+    "email": "dcalhoun@centresource.com",
+    "url": "http://centresource.com"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dcalhoun/generator-playbook.git"
+    "url": "git://github.com/centresource/generator-playbook.git"
   },
   "scripts": {
     "test": "mocha"
