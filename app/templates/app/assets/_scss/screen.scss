@@ -4,21 +4,40 @@
  * See the ToC in _application.scss
  */
 
-// Utilities
-@import "base/mixins";
-@import "bourbon/app/assets/stylesheets/bourbon";
-@import "bitters/bitters";
-@import "neat/app/assets/stylesheets/neat";
-@import "base/utilities";
 
-// Base
+
+/* Bourbon & Neat
+ * -----------------------------------------------------------------------------*/
+@import "bourbon/app/assets/stylesheets/bourbon";
+@import "neat/app/assets/stylesheets/neat-helpers";
+@import "base/grid-settings";
+@import "neat/app/assets/stylesheets/neat";
+
+
+
+/* Base
+ * -----------------------------------------------------------------------------*/
+@import "base/variables";
+@import "base/extends/base";
+@import "base/mixins/base";
+@import "base/utilities";
+@import "base/typography";
+@import "base/forms";
+@import "base/tables";
+@import "base/lists";
+@import "base/flashes";
 @import "base/fonts";
-@import "base/navigation";
 @import "base/library";
 @import "base/application";
 
-// Modules
+
+
+/* Modules
+ * -----------------------------------------------------------------------------*/
 // @import "modules/modal";
 
-// Pages
+
+
+/* Pages
+ * -----------------------------------------------------------------------------*/
 // @import "pages/home";

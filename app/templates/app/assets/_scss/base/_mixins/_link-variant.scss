@@ -1,0 +1,15 @@
+// Add styles to link variants
+@mixin link-variant($base-color, $hover-color: darken($base-color, 10%)) {
+  color: $base-color;
+  text-decoration: none;
+
+  &:visited {
+    color: $base-color;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $hover-color;
+  }
+}

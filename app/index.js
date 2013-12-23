@@ -1,6 +1,7 @@
 'use strict';
 var util = require('util');
 var path = require('path');
+var spawn = require('child_process').spawn;
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var globule = require('globule');
@@ -28,10 +29,6 @@ var PlaybookGenerator = module.exports = function PlaybookGenerator(args, option
 
   this.on('end', function () {
     this.installDependencies({ skipInstall: options['skip-install'] });
-
-    // Install Bitters
-    shelljs.cd('app/assets/_scss');
-    shelljs.exec('bitters install');
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -85,12 +82,14 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 
   this.prompt(prompts, function (props) {
 
+    this.bitters = props.bitters;
+
     // Multiple choice 'None' to false
     this.jsPre = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
 
     cb();
   }.bind(this));
-}
+};
 
 PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   var cb = this.async();
@@ -154,7 +153,7 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
 
     cb();
   }.bind(this));
-}
+};
 
 PlaybookGenerator.prototype.rubyDependencies = function rubyDependencies() {
   this.template('Gemfile');
@@ -188,13 +187,31 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 };
 
 PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {
-  if (this.jsPre) {
-    this.mkdir('app/assets/_coffee');
-  }
-
   if (this.jsPre === 'coffeescript') {
-    this.copy('conditional/coffee/.gitkeep', 'app/assets/_coffee/.gitkeep');
+    this.mkdir('app/assets/_coffee');
     this.copy('conditional/coffee/README.md', 'app/assets/_coffee/README.md');
     this.copy('conditional/coffee/app.coffee', 'app/assets/_coffee/app.coffee');
   }
-}
+};
+
+PlaybookGenerator.prototype.installBitters = function installBitters() {
+  // Install Bitters
+  shelljs.cd('app/assets/_scss');
+  shelljs.exec('bitters install');
+  shelljs.cd('../../../');
+
+  // Assimilate Bitters files
+  shelljs.mv('app/assets/_scss/bitters/*', 'app/assets/_scss/base/');
+
+  // Remove styled ID's
+  shelljs.sed('-i', /(, #flash_)(?:failure|notice|success)\s{/g, ' {', 'app/assets/_scss/base/_flashes.scss');
+
+  // Remove Bitters directory & file
+  shelljs.rm('-rf', 'app/assets/_scss/bitters');
+  shelljs.rm('-f', 'app/assets/_scss/base/_bitters.scss');
+
+  // Install additional mixins
+  shelljs.mv('app/assets/_scss/base/_mixins/_*', 'app/assets/_scss/base/mixins/')
+  shelljs.cat('app/assets/_scss/base/_mixins/imports.scss').toEnd('app/assets/_scss/base/mixins/_base.scss');
+  shelljs.rm('-rf', 'app/assets/_scss/base/_mixins');
+};

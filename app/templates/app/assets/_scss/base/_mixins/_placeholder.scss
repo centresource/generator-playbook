@@ -1,0 +1,6 @@
+// Accepts styling for placeholder content
+@mixin placeholder {
+  &.placeholder { @content }
+  &:-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+}

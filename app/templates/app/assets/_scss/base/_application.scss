@@ -1,21 +1,31 @@
-/* Things to place in separate files...
- * ---------------------------------------------------------------------------
- * _variables.scss
- * _mixins.scss
- * _utilities.scss
- * _typography.scss
- * _buttons.scss
- * _forms.scss
- * _lists.scss
- * _tables.scss
- * _library.scss     - Custom classes used throughout the app.
- * _module_name.scss - Styles for a module of functionality (e.g. – modal).
- * _page_name.scss   - Styles for page specific elements.
- * ---------------------------------------------------------------------------
- */
-
-/* TEMPLATE
+/* Application Template
  * -----------------------------------------------------------------------------
  * Styling for the structure of the site. If your element doesn't show up on
  * every page, it probably shouldn't be in this file.
  * -----------------------------------------------------------------------------*/
+
+/* Things to place in separate files...
+ * ---------------------------------------------------------------------------
+ * /extends/         => Sass extends declarations
+ * /mixins/          => Sass mixins declarations
+ * _buttons.scss
+ * _fonts.scss       => Font imports
+ * _forms.scss
+ * _lists.scss
+ * _library.scss     => Custom classes used throughout the app.
+ * _tables.scss
+ * _typography.scss
+ * _utilities.scss
+ * _variables.scss
+ * _module_name.scss => Styles for a module of functionality (e.g. – modal).
+ * _page_name.scss   => Styles for page specific elements.
+ * ---------------------------------------------------------------------------
+ */
+
+.header-primary {}
+
+.nav-primary {}
+
+.content-primary {}
+
+.footer-primary {}
