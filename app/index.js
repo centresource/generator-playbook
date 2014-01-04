@@ -135,9 +135,24 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       }
     },
     {
+      name: 'ghPagesProject',
+      type: 'list',
+      message: 'GitHub Project or User/Organization site?',
+      choices: ['Project', 'User/Organization'],
+      when: function(answers) {
+        return answers.deployHost == 'GitHub Pages';
+      }
+    },
+    {
       name: 'deployBranch',
       message: 'Branch to deploy to',
-      default: 'gh-pages',
+      default: function(answers) {
+        if (answers.ghPagesProject === 'Project') {
+          return 'gh-pages';
+        } else {
+          return 'master';
+        };
+      },
       when: function (answers) {
         return answers.deploy;
       }
@@ -148,13 +163,16 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
 
   this.prompt(prompts, function (props) {
 
-    this.deploy       = props.deploy;
-    this.deployBranch = props.deployBranch;
+    this.deploy         = props.deploy;
+    this.deployBranch   = props.deployBranch;
+    this.ghOwner        = props.ghOwner;
+    this.ghRepo         = props.ghRepo;
+    this.ghPagesProject = props.ghPagesProject.replace('/', '_').toLowerCase();
 
     if (this.deployHost == 'Heroku') {
       this.deployRemote = 'git@heroku.com:' + props.herokuRepo + '.git';
     } else {
-      this.deployRemote = 'git@github.com:' + props.ghOwner + '/' + props.ghRepo + '.git';
+      this.deployRemote = 'git@github.com:' + this.ghOwner + '/' + this.ghRepo + '.git';
     }
 
     cb();

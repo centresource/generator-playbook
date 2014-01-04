@@ -299,6 +299,24 @@ module.exports = function (grunt) {
           branch: '<%= deployBranch %>'
         }
       }
+    },<% } %><% if (ghPagesProject === 'project') { %>
+    replace: {
+      dist: {
+        options: {
+          patterns: [
+            {
+              match: /("?)\/?assets\//g,
+              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/assets/'
+            }
+          ]
+        },
+        files: [
+          {
+            expand: true,
+            src: ['dist/**/*.html']
+          }
+        ]
+      }
     },<% } %>
     jshint: {
       options: {
@@ -395,9 +413,8 @@ module.exports = function (grunt) {
   ]);<% if (deploy) { %>
 
   grunt.registerTask('deploy', [
-    'check',
-    'test',
-    'build',
+    'default',<% if (ghPagesProject === 'project') { %>
+    'replace',<% } %>
     'buildcontrol'
   ]);<% } %>
 
