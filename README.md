@@ -18,6 +18,8 @@ Playbook is installed like all other Yeoman generators: `npm install -g generato
 
 ## Usage
 ### Create a Site
+Playbook will run `bundle install`, so if you would like to install the Playbook gems into a gemset, set that up before running `yo playbook`.
+
 ````bash
 cd path/to/desired/location/
 mkdir project-name && cd project-name
