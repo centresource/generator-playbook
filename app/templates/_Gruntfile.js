@@ -299,7 +299,7 @@ module.exports = function (grunt) {
           branch: '<%= deployBranch %>'
         }
       }
-    },<% } %><% if (ghPagesProject === 'project') { %>
+    },<% } %><% if (deployHost === 'GitHub Pages' && ghPagesProject === 'project') { %>
     replace: {
       dist: {
         options: {
@@ -413,7 +413,7 @@ module.exports = function (grunt) {
   ]);<% if (deploy) { %>
 
   grunt.registerTask('deploy', [
-    'default',<% if (ghPagesProject === 'project') { %>
+    'default',<% if (deployHost === 'GitHub Pages' && ghPagesProject === 'project') { %>
     'replace',<% } %>
     'buildcontrol'
   ]);<% } %>

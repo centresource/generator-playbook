@@ -18,7 +18,7 @@
     "grunt-contrib-watch": "~0.5.2",
     "grunt-concurrent": "~0.3.0",
     "grunt-csscss": "~0.5.0",
-    "grunt-jekyll": "git://github.com/dannygarcia/grunt-jekyll.git#aa03074ee0f5b69dc9d7a0e6ced6bb8cd923add6",<% if (ghPagesProject === 'project') { %>
+    "grunt-jekyll": "git://github.com/dannygarcia/grunt-jekyll.git#aa03074ee0f5b69dc9d7a0e6ced6bb8cd923add6",<% if (deployHost === 'GitHub Pages' && ghPagesProject === 'project') { %>
     "grunt-replace": "~0.5.1",<% } %>
     "grunt-rev": "~0.1.0",
     "grunt-contrib-sass": "~0.5.0",

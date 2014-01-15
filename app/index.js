@@ -167,7 +167,11 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
     this.deployBranch   = props.deployBranch;
     this.ghOwner        = props.ghOwner;
     this.ghRepo         = props.ghRepo;
-    this.ghPagesProject = props.ghPagesProject.replace('/', '_').toLowerCase();
+    this.deployHost     = props.deployHost;
+
+    if (props.ghPagesProject) {
+      this.ghPagesProject = props.ghPagesProject.replace('/', '_').toLowerCase();
+    }
 
     if (this.deployHost == 'Heroku') {
       this.deployRemote = 'git@heroku.com:' + props.herokuRepo + '.git';

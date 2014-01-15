@@ -12,15 +12,13 @@ This project utilizes Playbook, reference Playbook's [setup guide](https://githu
 
 ## Usage
 
-### View the Site Locally
-````bash
-grunt serve
-````
-
-### Check, Test & Build for Production
-````bash
-grunt
-````
+### Grunt Tasks
+- Check, test & build for production: `grunt`
+- Serve the site locally: `grunt serve`
+- Deploy to production: `grunt deploy`
+- Check source: `grunt check`
+- Run tests: `grunt test`
+- Build for production: `grunt build`
 
 ## Bootstrap Components
 
