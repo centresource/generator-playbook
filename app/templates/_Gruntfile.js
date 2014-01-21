@@ -307,6 +307,10 @@ module.exports = function (grunt) {
             {
               match: /("?)\/?assets\//g,
               replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/assets/'
+            },
+            {
+              match: /(<a[^>]*href="?)(\/?)/g,
+              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/'
             }
           ]
         },
