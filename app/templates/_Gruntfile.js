@@ -305,11 +305,15 @@ module.exports = function (grunt) {
         options: {
           patterns: [
             {
-              match: /("?)\/?assets\//g,
+              match: /("|'?)\/?assets\//g,
               replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/assets/'
             },
             {
-              match: /(<a[^>]*href="?)(\/?)/g,
+              match: /(<a[^>]*href="?)(\/)/g,
+              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/'
+            },
+            {
+              match: /(<form[^>]*action="?)(\/)/g,
               replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/'
             }
           ]
@@ -317,7 +321,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            src: ['dist/**/*.html']
+            src: ['dist/**/*.html', 'dist/assets/js/*.js']
           }
         ]
       }
