@@ -6,7 +6,7 @@ Playbook is a Yeoman generator for [Jekyll](http://jekyllrb.com/) site utilizing
 
 ## Get Started
 ### Prerequisites
-If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Ruby](https://www.ruby-lang.org/en/) `>=1.9` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
+If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Ruby](https://www.ruby-lang.org/en/) `>=1.9`, [Yeoman](http://yeoman.io/) `>=1.1.2` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
 
 - [Node.js](http://davidcalhoun.me/2013/12/16/developer-tools-homebrew/)
 - [Ruby](https://rvm.io/rvm/install)
