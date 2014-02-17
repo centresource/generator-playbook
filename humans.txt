@@ -3,7 +3,7 @@
 
 # TEAM
 
-  <name> -- <role> --  <twitter>
+  David Calhoun -- Designer & Developer --  @david_calhoun
 
 # THANKS
 
@@ -18,4 +18,5 @@
   Sass
   Coffeescript
   HTML5 ★ Boilerplate
+  Bourbon
 
