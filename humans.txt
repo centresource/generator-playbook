@@ -1,0 +1,21 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  <name> -- <role> --  <twitter>
+
+# THANKS
+
+  <name>
+
+# TECHNOLOGY COLOPHON
+
+  Jekyll static site generator
+  Yeoman
+  Grunt
+  Bower
+  Sass
+  Coffeescript
+  HTML5 ★ Boilerplate
+
