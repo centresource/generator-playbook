@@ -1,5 +1,13 @@
-node_modules/
-temp/
 .ruby-version
 .ruby-gemset
 **/.DS_Store
+
+# Ignore hidden folders #
+# This takes care of .tmp, .sass-cache, and many others #
+.*/
+
+# Ignore for Yeoman-Jekyll projects #
+app/_bower_components
+dist
+node_modules
+.tmp

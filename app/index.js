@@ -214,7 +214,7 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 
 PlaybookGenerator.prototype.templates = function templates() {
   this.template('conditional/template/default.html', 'app/_layouts/default.html');
-  this.template('conditional/template/index.md', 'app/index.md');
+  this.template('conditional/template/index.html', 'app/index.html');
 
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/google-analytics.html');

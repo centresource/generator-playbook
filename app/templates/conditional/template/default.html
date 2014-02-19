@@ -12,12 +12,11 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css({app,.tmp}) /assets/css/main.css -->
-    <link rel="stylesheet" href="/_bower_components/normalize-css/normalize.css">
-    <link rel="stylesheet" href="/assets/css/syntax.css">
-    <link rel="stylesheet" href="/assets/css/screen.css">
-    <!-- endbuild -->
+    {% include styles.html %}
 
+    <!-- build:js({app,.tmp}) /assets/js/modernizr.js -->
+    <script src="/_bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -37,7 +36,7 @@
     <footer id="footer-primary" class="footer-primary">
     </footer>
 
-    <!--[if IE 8]>
+    <!--[if lte IE 8]>
       {% include scripts-ie8.html %}
     <![endif]-->
 
