@@ -1,6 +1,6 @@
 # Playbook
 
-Playbook is a Yeoman generator to get you building interfaces faster. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) is included to help you write CSS faster.
+Playbook is a Yeoman generator to get you building interfaces faster. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
 
 [Grunt](http://gruntjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
 
