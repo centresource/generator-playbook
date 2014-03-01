@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(projectName) %>",
+  "name": "<%= _.slugify(appName) %>",
   "version": "0.0.0",
   "devDependencies": {
     "grunt": "~0.4.1",<% if (deploy) { %>
@@ -26,8 +26,7 @@
     "grunt-usemin": "~0.1.12",
     "load-grunt-tasks": "~0.1.0",
     "time-grunt": "~0.1.1",
-    "grunt-aws": "~0.2.5",
-    "grunt-replace": "~0.5.1"
+    "grunt-aws": "~0.2.5"
   },
   "engines": {
     "node": ">=0.8.0"

@@ -30,6 +30,7 @@ var PlaybookGenerator = module.exports = function PlaybookGenerator(args, option
     this.installDependencies({ skipInstall: options['skip-install'] });
   });
 
+  this.appName = path.basename(process.cwd());
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
@@ -47,10 +48,6 @@ PlaybookGenerator.prototype.askForUser = function askForUser() {
       name: 'authorEmail',
       message: 'What is your email?',
       default: this.gitInfo.email
-    },
-    {
-      name: 'projectName',
-      message: 'What is the name of the project?'
     }
   ];
 
@@ -61,7 +58,6 @@ PlaybookGenerator.prototype.askForUser = function askForUser() {
 
     this.authorName  = props.authorName;
     this.authorEmail = props.authorEmail;
-    this.projectName = props.projectName;
 
     cb();
   }.bind(this));
@@ -77,9 +73,16 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
       choices: ['None', 'CoffeeScript']
     },
     {
+      name: 'ie8',
+      type: 'confirm',
+      message: 'Support IE8?',
+      default: false
+    },
+    {
       name: 'googleAnalytics',
       type: 'confirm',
-      message: 'Include Google Analytics?'
+      message: 'Include Google Analytics?',
+      default: false
     }
   ]
 
@@ -87,6 +90,7 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 
   this.prompt(prompts, function (props) {
 
+    this.ie8             = props.ie8;
     this.googleAnalytics = props.googleAnalytics;
 
     // Multiple choice 'None' to false
@@ -215,6 +219,10 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 PlaybookGenerator.prototype.templates = function templates() {
   this.template('conditional/template/default.html', 'app/_layouts/default.html');
   this.template('conditional/template/index.html', 'app/index.html');
+
+  if (this.ie8) {
+    this.copy('conditional/template/scripts-ie8.html', 'app/_includes/scripts-ie8.html');
+  };
 
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/google-analytics.html');

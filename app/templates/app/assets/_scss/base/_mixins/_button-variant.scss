@@ -11,8 +11,13 @@
   &:focus,
   &:active,
   &.active {
-    background-color: darken($background, 7);
-    border-color: darken($border, 7);
+    @if type-of($background) == color {
+      background-color: darken($background, 7);
+    }
+
+    @if type-of($background) == color {
+      border-color: darken($border, 7);
+    }
     color: $color;
   }
 

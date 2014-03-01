@@ -5,8 +5,8 @@
 
 # Use _config.build.yml to override these settings on `grunt build`.
 
-name: <%= projectName %>
-description: <%= projectName %>.
+name: <%= appName %>
+description: <%= appName %>.
 
 author:
   name: <%= authorName %>
