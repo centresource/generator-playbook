@@ -1,4 +1,4 @@
-# <%= projectName %>
+# <%= appName %>
 
 [Describe the project.]
 
@@ -13,17 +13,17 @@ This project utilizes Playbook, reference Playbook's [setup guide](https://githu
 ## Usage
 
 ### Grunt Tasks
-- Check, test & build for production: `grunt`
-- Serve the site locally: `grunt serve`
-- Deploy to production: `grunt deploy`
-- Check source: `grunt check`
-- Run tests: `grunt test`
-- Build for production: `grunt build`
+##### grunt serve
+Serve your source locally into your browser. LiveReload will automatically load any changes to HTML, CSS and JavaScript that you make.
 
-## Bootstrap Components
+##### grunt check
+Check the quality of your source with tools like [JSLint](http://www.jslint.com/), [CSSLint](http://csslint.net/) and [csscss](http://zmoazeni.github.io/csscss/).
 
-### CSS
-- None
+##### grunt test
+Run any test that you have defined for your source.
 
-### JavaScripts
-- None
+##### grunt build
+Build the concatenated, minified production version of the source into the `dist` directory.<% if (deploy) { %>
+
+##### grunt deploy
+Deploy the production version of the source to <% if (deployHost === 'GitHub Pages') { %>[GitHub Pages](http://pages.github.com/)<% } %><% if (deployHost === 'Heroku') { %>[Heroku](https://www.heroku.com/)<% } %> via [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control).<% } %>

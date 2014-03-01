@@ -42,3 +42,5 @@ Build the concatenated, minified production version of the source into the `dist
 
 ##### grunt deploy
 Deploy the production version of the source to [GitHub Pages](http://pages.github.com/) or [Heroku](https://www.heroku.com/) via [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control). This ability is configurable during Playbook generation.
+
+If you choose to utilize `grunt-build-control` to deploy a GitHub Pages user/organization site, your source must live in a branch other than `master`. GitHub Pages [user/organization sites](https://help.github.com/articles/user-organization-and-project-pages#project-pages) serve the files found in the `master` branch to the browser.
