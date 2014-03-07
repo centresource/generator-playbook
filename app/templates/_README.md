@@ -26,4 +26,4 @@ Run any test that you have defined for your source.
 Build the concatenated, minified production version of the source into the `dist` directory.<% if (deploy) { %>
 
 ##### grunt deploy
-Deploy the production version of the source to <% if (deployHost === 'GitHub Pages') { %>[GitHub Pages](http://pages.github.com/)<% } %><% if (deployHost === 'Heroku') { %>[Heroku](https://www.heroku.com/)<% } %> via [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control).<% } %>
+Deploy the production version of the source to <% if (deployHost === 'GitHub Pages') { %>[GitHub Pages](http://pages.github.com/)<% } %><% if (deployHost === 'Generic Git Remote') { %>the server<% } %> via [grunt-build-control](https://github.com/robwierzbowski/grunt-build-control).<% } %>
