@@ -112,7 +112,7 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       name: 'deployHost',
       type: 'list',
       message: 'Host to deploy to',
-      choices: ['GitHub Pages', 'Heroku'],
+      choices: ['GitHub Pages', 'Generic remote'],
       when: function (answers) {
         return answers.deploy;
       }
@@ -132,13 +132,6 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       }
     },
     {
-      name: 'herokuRepo',
-      message: 'Heroku app name',
-      when: function (answers) {
-        return answers.deployHost === 'Heroku';
-      }
-    },
-    {
       name: 'ghPagesProject',
       type: 'list',
       message: 'GitHub Project or User/Organization site?',
@@ -148,14 +141,23 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       }
     },
     {
+      name: 'remoteURL',
+      message: 'Remote URL',
+      when: function (answers) {
+        return answers.deployHost === 'Generic remote';
+      }
+    },
+    {
       name: 'deployBranch',
       message: 'Branch to deploy to',
       default: function(answers) {
         if (answers.ghPagesProject === 'Project') {
           return 'gh-pages';
-        } else {
+        } else if (answers.ghPagesProject === 'User/Organization') {
           return 'master';
-        };
+        } else {
+          return 'dist';
+        }
       },
       when: function (answers) {
         return answers.deploy;
@@ -168,19 +170,19 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   this.prompt(prompts, function (props) {
 
     this.deploy         = props.deploy;
-    this.deployBranch   = props.deployBranch;
+    this.deployHost     = props.deployHost;
     this.ghOwner        = props.ghOwner;
     this.ghRepo         = props.ghRepo;
-    this.deployHost     = props.deployHost;
+    this.deployBranch   = props.deployBranch;
 
     if (props.ghPagesProject) {
       this.ghPagesProject = props.ghPagesProject.replace('/', '_').toLowerCase();
     }
 
-    if (this.deployHost == 'Heroku') {
-      this.deployRemote = 'git@heroku.com:' + props.herokuRepo + '.git';
-    } else {
+    if (this.deployHost === 'GitHub Pages') {
       this.deployRemote = 'git@github.com:' + this.ghOwner + '/' + this.ghRepo + '.git';
+    } else {
+      this.deployRemote = props.remoteURL;
     }
 
     cb();
