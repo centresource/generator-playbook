@@ -81,8 +81,7 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
     {
       name: 'googleAnalytics',
       type: 'confirm',
-      message: 'Include Google Analytics?',
-      default: false
+      message: 'Include Google Analytics?'
     }
   ]
 
@@ -247,9 +246,6 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
 
   // Assimilate Bitters files
   shelljs.mv('app/assets/_scss/bitters/*', 'app/assets/_scss/base/');
-
-  // Remove styled ID's
-  shelljs.sed('-i', /(, #flash_)(?:failure|notice|success)\s{/g, ' {', 'app/assets/_scss/base/_flashes.scss');
 
   // Remove Bitters directory & file
   shelljs.rm('-rf', 'app/assets/_scss/bitters');
