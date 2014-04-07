@@ -222,37 +222,39 @@ PlaybookGenerator.prototype.templates = function templates() {
   this.template('conditional/template/index.html', 'app/index.html');
 
   if (this.ie8) {
-    this.copy('conditional/template/scripts-ie8.html', 'app/_includes/scripts-ie8.html');
+    this.copy('conditional/template/scripts-ie8.html', 'app/_includes/shared/scripts-ie8.html');
   };
 
   if (this.googleAnalytics) {
-    this.copy('conditional/template/google-analytics.html', 'app/_includes/google-analytics.html');
+    this.copy('conditional/template/google-analytics.html', 'app/_includes/shared/google-analytics.html');
   };
 };
 
 PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {
   if (this.jsPre === 'coffeescript') {
-    this.mkdir('app/assets/_coffee');
-    this.copy('conditional/coffee/README.md', 'app/assets/_coffee/README.md');
-    this.copy('conditional/coffee/app.coffee', 'app/assets/_coffee/app.coffee');
+    this.copy('conditional/coffee/app.coffee', 'app/scripts/app.coffee');
+  } else {
+    this.copy('conditional/javascript/app.js', 'app/scripts/app.js');
   }
 };
 
 PlaybookGenerator.prototype.installBitters = function installBitters() {
+  var root = shelljs.pwd();
+
   // Install Bitters
-  shelljs.cd('app/assets/_scss');
-  shelljs.exec('bundle exec bitters install');
-  shelljs.cd('../../../');
+  shelljs.cd('app/styles');
+  shelljs.exec('bitters install');
+  shelljs.cd(root);
 
   // Assimilate Bitters files
-  shelljs.mv('app/assets/_scss/bitters/*', 'app/assets/_scss/base/');
+  shelljs.mv('app/styles/bitters/*', 'app/styles/base/');
 
   // Remove Bitters directory & file
-  shelljs.rm('-rf', 'app/assets/_scss/bitters');
-  shelljs.rm('-f', 'app/assets/_scss/base/_bitters.scss');
+  shelljs.rm('-rf', 'app/styles/bitters');
+  shelljs.rm('-f', 'app/styles/base/_bitters.scss');
 
   // Install additional mixins
-  shelljs.mv('app/assets/_scss/base/_mixins/_*', 'app/assets/_scss/base/mixins/')
-  shelljs.cat('app/assets/_scss/base/_mixins/imports.scss').toEnd('app/assets/_scss/base/mixins/_base.scss');
-  shelljs.rm('-rf', 'app/assets/_scss/base/_mixins');
+  shelljs.mv('app/styles/base/_mixins/_*', 'app/styles/base/mixins/');
+  shelljs.cat('app/styles/base/_mixins/imports.scss').toEnd('app/styles/base/mixins/_base.scss');
+  shelljs.rm('-rf', 'app/styles/base/_mixins');
 };
