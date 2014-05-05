@@ -241,7 +241,7 @@ PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {
 PlaybookGenerator.prototype.installBitters = function installBitters() {
   // Install Bitters
   shelljs.cd('app/assets/_scss');
-  shelljs.exec('bitters install');
+  shelljs.exec('bundle exec bitters install');
   shelljs.cd('../../../');
 
   // Assimilate Bitters files
