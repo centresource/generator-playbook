@@ -1,6 +1,6 @@
 {
   "name": "generator-playbook",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A Yeoman generator for a Jekyll site utilizing thoughtbot's Bourbon toolset.",
   "keywords": [
     "yeoman-generator",

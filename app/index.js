@@ -209,7 +209,7 @@ PlaybookGenerator.prototype.app = function app() {
   this.template('_config.build.yml', '_config.build.yml');
   this.template('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
-  this.template('_README.MD', 'README.md');
+  this.template('_README.md', 'README.md');
 };
 
 PlaybookGenerator.prototype.projectfiles = function projectfiles() {
@@ -242,8 +242,8 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
   var root = shelljs.pwd();
 
   // Install Bitters
-  shelljs.cd('app/styles');
-  shelljs.exec('bitters install');
+  shelljs.cd('app/assets/_scss');
+  shelljs.exec('bundle exec bitters install');
   shelljs.cd(root);
 
   // Assimilate Bitters files
