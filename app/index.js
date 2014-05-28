@@ -81,7 +81,8 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
     {
       name: 'googleAnalytics',
       type: 'confirm',
-      message: 'Include Google Analytics?'
+      message: 'Include Google Analytics?',
+      default: false
     }
   ]
 
@@ -105,7 +106,8 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
     {
       name: 'deploy',
       message: 'Use grunt-build-control for deployment?',
-      type: 'confirm'
+      type: 'confirm',
+      default: false
     },
     {
       name: 'deployHost',
@@ -243,7 +245,7 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
 
   // Install Bitters
   shelljs.cd('app/styles');
-  shelljs.exec('bitters install');
+  shelljs.exec('bundle exec bitters install');
   shelljs.cd(root);
 
   // Assimilate Bitters files
@@ -255,6 +257,6 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
 
   // Install additional mixins
   shelljs.mv('app/styles/base/_mixins/_*', 'app/styles/base/mixins/');
-  shelljs.cat('app/styles/base/_mixins/imports.scss').toEnd('app/styles/base/mixins/_base.scss');
+  shelljs.cat('app/styles/base/_mixins/imports.scss').toEnd('app/styles/base/mixins/_mixins.scss');
   shelljs.rm('-rf', 'app/styles/base/_mixins');
 };

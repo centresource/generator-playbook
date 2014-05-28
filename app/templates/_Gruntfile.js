@@ -18,7 +18,8 @@ module.exports = function (grunt) {
     // Configurable paths
     yeoman: {
       app: 'app',
-      dist: 'dist'
+      dist: 'dist',
+      vendor: 'vendor'
     },
     watch: {
       sass: {
@@ -37,7 +38,7 @@ module.exports = function (grunt) {
         files: [
           '<%%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
           '_config.yml',
-          '!<%%= yeoman.app %>/bower_components'
+          '!<%%= yeoman.vendor %>'
         ],
         tasks: ['jekyll:server']
       },
@@ -57,7 +58,8 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         livereload: 35729,
-        // change this to '0.0.0.0' to access the server from outside
+        // Change hostname to '0.0.0.0' to access the server
+        // from another device on the same network (e.g. – iPhone)
         hostname: 'localhost'
       },
       livereload: {
@@ -113,7 +115,7 @@ module.exports = function (grunt) {
         bundleExec: true,
         debugInfo: false,
         lineNumbers: false,
-        loadPath: '<%%= yeoman.app %>/bower_components'
+        loadPath: '<%%= yeoman.vendor %>'
       },
       dist: {
         files: [{
@@ -264,7 +266,7 @@ module.exports = function (grunt) {
             // Like Jekyll, exclude files & folders prefixed with an underscore
             '!**/_*{,/**}',
             // Explicitly add any files your site needs for distribution here
-            //'bower_components/jquery/jquery.js',
+            //'<%%= yeoman.vendor %>/jquery/jquery.js',
             'favicon.ico',
             // 'apple-touch*.png'
           ],
