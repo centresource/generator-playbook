@@ -18,8 +18,7 @@ module.exports = function (grunt) {
     // Configurable paths
     yeoman: {
       app: 'app',
-      dist: 'dist',
-      vendor: 'vendor'
+      dist: 'dist'
     },
     watch: {
       sass: {
@@ -38,7 +37,7 @@ module.exports = function (grunt) {
         files: [
           '<%%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}',
           '_config.yml',
-          '!<%%= yeoman.vendor %>'
+          '!./vendor'
         ],
         tasks: ['jekyll:server']
       },
@@ -65,11 +64,14 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           open: true,
-          base: [
-            '.tmp',
-            '.jekyll',
-            '<%%= yeoman.app %>'
-          ]
+          middleware: function(connect, options, middlewares) {
+            return [
+              connect.static('.tmp'),
+              connect.static('.jekyll'),
+              connect().use('/vendor', connect.static('./vendor')),
+              connect.static('<%%= yeoman.app %>')
+            ]
+          }
         }
       },
       dist: {
@@ -115,7 +117,7 @@ module.exports = function (grunt) {
         bundleExec: true,
         debugInfo: false,
         lineNumbers: false,
-        loadPath: '<%%= yeoman.vendor %>'
+        loadPath: './vendor'
       },
       dist: {
         files: [{
@@ -266,7 +268,7 @@ module.exports = function (grunt) {
             // Like Jekyll, exclude files & folders prefixed with an underscore
             '!**/_*{,/**}',
             // Explicitly add any files your site needs for distribution here
-            //'<%%= yeoman.vendor %>/jquery/jquery.js',
+            //'./vendor/jquery/jquery.js',
             'favicon.ico',
             // 'apple-touch*.png'
           ],
