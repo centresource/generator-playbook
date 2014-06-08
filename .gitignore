@@ -7,7 +7,8 @@
 .*/
 
 # Ignore for Yeoman-Jekyll projects #
-app/_bower_components
+app/*bower_components
+vendor
 dist
 node_modules
 .tmp

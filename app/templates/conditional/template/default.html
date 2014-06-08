@@ -9,36 +9,28 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    {% include styles.html %}
+    {% include shared/styles.html %}
 
-    <!-- build:js({app,.tmp}) /assets/js/modernizr.js -->
-    <script src="/_bower_components/modernizr/modernizr.js"></script>
+    <!-- build:js({app,.tmp}) /scripts/modernizr.js -->
+    <script src="/vendor/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
 
   <body>
-    <!--[if lt IE 7]>
+    <!--[if lt IE 9]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header id="header-primary" class="header-primary">
-    </header>
-
-    <nav id="nav-primary" class="nav-primary">
-    </nav>
-
-    <section id="content-primary" class="content-primary">
-      {{ content }}
-    </section>
-
-    <footer id="footer-primary" class="footer-primary">
-    </footer><% if (ie8) { %>
+    {% include shared/header.html %}
+    {% include shared/nav.html %}
+    {{ content }}
+    {% include shared/footer.html %}<% if (ie8) { %>
 
     <!--[if lte IE 8]>
-      {% include scripts-ie8.html %}
+      {% include shared/scripts-ie8.html %}
     <![endif]--><% } %>
 
-    {% include scripts.html %}<% if (googleAnalytics) { %>
-    {% include google-analytics.html %}<% } %>
+    {% include shared/scripts.html %}<% if (googleAnalytics) { %>
+    {% include shared/google-analytics.html %}<% } %>
   </body>
 </html>
