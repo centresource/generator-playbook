@@ -9,17 +9,39 @@
 /* Bourbon & Neat
  * -----------------------------------------------------------------------------*/
 @import "bourbon/dist/bourbon";
-@import "neat/app/assets/stylesheets/neat-helpers";
 @import "base/grid-settings";
 @import "neat/app/assets/stylesheets/neat";
 
 
 
-/* Base
+/* Variables
  * -----------------------------------------------------------------------------*/
 @import "base/variables";
-@import "base/extends/extends";
-@import "base/mixins/mixins";
+
+
+
+/* Mixins
+ * -----------------------------------------------------------------------------*/
+@import "base/mixins/background-opacity";
+@import "base/mixins/button-variant";
+@import "base/mixins/flash";
+@import "base/mixins/link-variant";
+@import "base/mixins/placeholder";
+@import "base/mixins/selection";
+@import "base/mixins/text-overflow";
+
+
+
+/* Extends
+ * -----------------------------------------------------------------------------*/
+@import "base/extends/button";
+@import "base/extends/clearfix";
+@import "base/extends/hide-text";
+
+
+
+/* Base
+ * -----------------------------------------------------------------------------*/
 @import "base/utilities";
 @import "base/typography";
 @import "base/forms";
