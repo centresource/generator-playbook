@@ -69,7 +69,8 @@ module.exports = function (grunt) {
               connect.static('.tmp'),
               connect.static('.jekyll'),
               connect().use('/vendor', connect.static('./vendor')),
-              connect.static('<%%= yeoman.app %>')
+              connect.static('./app'),
+              connect.directory('./app')
             ]
           }
         }
