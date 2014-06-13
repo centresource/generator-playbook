@@ -64,14 +64,14 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           open: true,
-          middleware: function(connect, options, middlewares) {
+          middleware: function (connect) {
             return [
               connect.static('.tmp'),
               connect.static('.jekyll'),
               connect().use('/vendor', connect.static('./vendor')),
               connect.static('./app'),
               connect.directory('./app')
-            ]
+            ];
           }
         }
       },
@@ -275,6 +275,12 @@ module.exports = function (grunt) {
           ],
           dest: '<%%= yeoman.dist %>'
         }]
+      },
+      assemble: {
+        files: [{
+          src: ['vendor/**/*.js', 'vendor/**/*.css'],
+          dest: '.tmp/'
+        }]
       }
     },
     rev: {
@@ -309,8 +315,12 @@ module.exports = function (grunt) {
         options: {
           patterns: [
             {
-              match: /("|'?)\/?assets\//g,
-              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/assets/'
+              match: /("|'?)\/?styles\//g,
+              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/styles/'
+            },
+            {
+              match: /("|'?)\/?scripts\//g,
+              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/scripts/'
             },
             {
               match: /(<a[^>]*href="?)(\/)/g,
@@ -413,6 +423,7 @@ module.exports = function (grunt) {
     // Jekyll cleans files from the target directory, so must run first
     'jekyll:dist',
     'concurrent:dist',
+    'copy:assemble',
     'useminPrepare',
     'concat',
     'cssmin',
