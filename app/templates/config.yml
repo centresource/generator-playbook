@@ -45,4 +45,4 @@ markdown: redcarpet
   # extensions: ['fenced_code_blocks', 'smart']
 
 # Use Pygments to highlight code blocks
-pygments: true
+highlighter: pygments
