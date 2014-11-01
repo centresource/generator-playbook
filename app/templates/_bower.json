@@ -2,10 +2,10 @@
   "name": "<%= _.slugify(appName) %>",
   "version": "0.0.0",
   "dependencies": {
-    "normalize-css": "~3.0.1",
+    "normalize-css": "~3.0.2",
     "bourbon": "~4.0.2",
-    "neat": "~1.6.0",
-    "modernizr": "~2.8.2",<% if (ie8) { %>
+    "neat": "~1.7.0",
+    "modernizr": "~2.8.3",<% if (ie8) { %>
     "jquery": "~1.11.1",
     "selectivizr": "~1.0.2",
     "respond": "~1.4.2"<% } else { %>
