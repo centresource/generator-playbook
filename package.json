@@ -13,14 +13,15 @@
     "front-end",
     "web",
     "site",
+    "prototype",
     "sass",
     "coffeescript"
   ],
-  "homepage": "https://github.com/centresource/generator-playbook",
+  "homepage": "http://centresource.github.io/generator-playbook/",
   "bugs": "https://github.com/centresource/generator-playbook/issues",
   "author": {
     "name": "David Calhoun",
-    "email": "dcalhoun@centresource.com",
+    "email": "dpcalhoun@gmail.com",
     "url": "http://centresource.com"
   },
   "main": "app/index.js",
