@@ -15,7 +15,8 @@
     "site",
     "prototype",
     "sass",
-    "coffeescript"
+    "coffeescript",
+    "libsass"
   ],
   "homepage": "http://centresource.github.io/generator-playbook/",
   "bugs": "https://github.com/centresource/generator-playbook/issues",
