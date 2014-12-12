@@ -113,7 +113,7 @@ module.exports = function (grunt) {
         '.jekyll'
       ]
     },
-    sass: {
+    sass: {<% if (sassComp === 'Ruby') { %>
       options: {
         bundleExec: true,
         debugInfo: false,
@@ -141,7 +141,23 @@ module.exports = function (grunt) {
           dest: '.tmp/styles',
           ext: '.css'
         }]
-      }
+      }<% } %><% if (sassComp === 'LibSass') { %>
+      options: {
+        sourceMap: false,
+        includePaths: ['./vendor']
+      },
+      dist: {
+        files: {
+          // LibSass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
+          '.tmp/styles/screen.css': '<%= yeoman.app %>/styles/screen.{scss,sass}'
+        }
+      },
+      server: {
+        files: {
+          // LibSass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
+          '.tmp/styles/screen.css': '<%= yeoman.app %>/styles/screen.{scss,sass}'
+        }
+      }<% } %>
     },<% if (jsPre === 'coffeescript') { %>
     coffee: {
       dist: {

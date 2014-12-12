@@ -73,6 +73,12 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
       choices: ['None', 'CoffeeScript']
     },
     {
+      name: 'sassComp',
+      type: 'list',
+      message: 'Sass Compiler',
+      choices: ['Ruby', 'LibSass']
+    },
+    {
       name: 'ie8',
       type: 'confirm',
       message: 'Support IE8?',
