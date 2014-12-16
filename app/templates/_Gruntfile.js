@@ -148,13 +148,13 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          // LibSass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
+          // grunt-sass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
           '.tmp/styles/screen.css': '<%%= yeoman.app %>/styles/screen.{scss,sass}'
         }
       },
       server: {
         files: {
-          // LibSass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
+          // grunt-sass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
           '.tmp/styles/screen.css': '<%%= yeoman.app %>/styles/screen.{scss,sass}'
         }
       }<% } %>
