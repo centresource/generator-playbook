@@ -101,7 +101,8 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 
     // Multiple choice 'None' to false
     this.jsPre = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
-    this.sassComp = props.sassComp;
+    // Set sassComp variable to lowercase
+    this.sassComp = props.sassComp : props.sassComp.toLowerCase();
 
     cb();
   }.bind(this));
