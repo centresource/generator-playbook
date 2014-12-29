@@ -119,7 +119,11 @@ module.exports = function (grunt) {
         debugInfo: false,
         lineNumbers: false,
         loadPath: './vendor'
-      },
+      },<% } %><% if (sassComp === 'LibSass') { %>
+      options: {
+        sourceMap: false,
+        includePaths: ['./vendor']
+      },<% } %>
       dist: {
         files: [{
           expand: true,
@@ -141,23 +145,7 @@ module.exports = function (grunt) {
           dest: '.tmp/styles',
           ext: '.css'
         }]
-      }<% } %><% if (sassComp === 'LibSass') { %>
-      options: {
-        sourceMap: false,
-        includePaths: ['./vendor']
-      },
-      dist: {
-        files: {
-          // grunt-sass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
-          '.tmp/styles/screen.css': '<%%= yeoman.app %>/styles/screen.{scss,sass}'
-        }
-      },
-      server: {
-        files: {
-          // grunt-sass requires explicit declaration of scss/css input/output files (No * wildcards permitted)
-          '.tmp/styles/screen.css': '<%%= yeoman.app %>/styles/screen.{scss,sass}'
-        }
-      }<% } %>
+      }
     },<% if (jsPre === 'coffeescript') { %>
     coffee: {
       dist: {
