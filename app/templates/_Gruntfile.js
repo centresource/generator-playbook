@@ -113,13 +113,17 @@ module.exports = function (grunt) {
         '.jekyll'
       ]
     },
-    sass: {
+    sass: {<% if (sassComp === 'ruby') { %>
       options: {
         bundleExec: true,
         debugInfo: false,
         lineNumbers: false,
         loadPath: './vendor'
-      },
+      },<% } %><% if (sassComp === 'libsass') { %>
+      options: {
+        sourceMap: false,
+        includePaths: ['./vendor']
+      },<% } %>
       dist: {
         files: [{
           expand: true,

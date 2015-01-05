@@ -2,9 +2,11 @@
   "name": "<%= _.slugify(appName) %>",
   "version": "0.0.0",
   "dependencies": {
-    "normalize-css": "~3.0.2",
+    "normalize-css": "~3.0.2",<% if (sassComp === 'Ruby') { %>
     "bourbon": "~4.0.2",
-    "neat": "~1.7.0",
+    "neat": "~1.7.0",<% } else { %>
+    "bourbon": "3.2.3",
+    "neat": "1.5.1",<% } %>
     "modernizr": "~2.8.3",<% if (ie8) { %>
     "jquery": "~1.11.1",
     "selectivizr": "~1.0.2",

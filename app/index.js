@@ -73,6 +73,12 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
       choices: ['None', 'CoffeeScript']
     },
     {
+      name: 'sassComp',
+      type: 'list',
+      message: 'Sass Compiler',
+      choices: ['Ruby', 'LibSass']
+    },
+    {
       name: 'ie8',
       type: 'confirm',
       message: 'Support IE8?',
@@ -95,6 +101,8 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 
     // Multiple choice 'None' to false
     this.jsPre = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
+    // Set sassComp variable to lowercase
+    this.sassComp = props.sassComp.toLowerCase();
 
     cb();
   }.bind(this));
