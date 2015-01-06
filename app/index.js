@@ -75,7 +75,7 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
     {
       name: 'sassComp',
       type: 'list',
-      message: 'Sass Compiler',
+      message: 'Sass compiler',
       choices: ['Ruby', 'LibSass']
     },
     {
@@ -101,7 +101,8 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 
     // Multiple choice 'None' to false
     this.jsPre = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
-    // Set sassComp variable to lowercase
+
+    // Lowercase sassComp variable
     this.sassComp = props.sassComp.toLowerCase();
 
     cb();
