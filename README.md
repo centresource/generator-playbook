@@ -8,7 +8,7 @@ Playbook is a Yeoman generator to get you building interfaces faster. [Jekyll](h
 If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoman.io/) `>=1.1.2`, [Ruby](https://www.ruby-lang.org/en/) `>=1.9` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
 
 - [Node.js](http://davidcalhoun.me/2013/12/16/developer-tools-homebrew/)
-- [Yeoman](http://yeoman.io/gettingstarted.html)
+- [Yeoman](http://yeoman.io/learning/index.html)
 - [Ruby](https://rvm.io/rvm/install)
 - [Bundler](http://bundler.io/#getting-started)
 
