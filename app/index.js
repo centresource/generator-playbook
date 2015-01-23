@@ -79,12 +79,6 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
       choices: ['Ruby', 'LibSass']
     },
     {
-      name: 'ie8',
-      type: 'confirm',
-      message: 'Support IE8?',
-      default: false
-    },
-    {
       name: 'googleAnalytics',
       type: 'confirm',
       message: 'Include Google Analytics?',
@@ -95,8 +89,6 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
   console.log(chalk.yellow('\nPreprocessors and tools.') + ' →');
 
   this.prompt(prompts, function (props) {
-
-    this.ie8             = props.ie8;
     this.googleAnalytics = props.googleAnalytics;
 
     // Multiple choice 'None' to false
@@ -231,10 +223,6 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 PlaybookGenerator.prototype.templates = function templates() {
   this.template('conditional/template/default.html', 'app/_layouts/default.html');
   this.template('conditional/template/index.html', 'app/index.html');
-
-  if (this.ie8) {
-    this.copy('conditional/template/scripts-ie8.html', 'app/_includes/shared/scripts-ie8.html');
-  };
 
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/shared/google-analytics.html');

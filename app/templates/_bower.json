@@ -7,11 +7,8 @@
     "neat": "~1.7.0",<% } else { %>
     "bourbon": "3.2.3",
     "neat": "1.5.1",<% } %>
-    "modernizr": "~2.8.3",<% if (ie8) { %>
-    "jquery": "~1.11.1",
-    "selectivizr": "~1.0.2",
-    "respond": "~1.4.2"<% } else { %>
-    "jquery": "~2.1.1"<% } %>
+    "modernizr": "~2.8.3",
+    "jquery": "~2.1.1"
   },
   "devDependencies": {}
 }
