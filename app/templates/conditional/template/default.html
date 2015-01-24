@@ -17,18 +17,10 @@
   </head>
 
   <body>
-    <!--[if lt IE 9]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     {% include shared/header.html %}
     {% include shared/nav.html %}
     {{ content }}
-    {% include shared/footer.html %}<% if (ie8) { %>
-
-    <!--[if lte IE 8]>
-      {% include shared/scripts-ie8.html %}
-    <![endif]--><% } %>
+    {% include shared/footer.html %}
 
     {% include shared/scripts.html %}<% if (googleAnalytics) { %>
     {% include shared/google-analytics.html %}<% } %>
