@@ -22,10 +22,22 @@
  * ---------------------------------------------------------------------------
  */
 
-.header-primary {}
 
-.nav-primary {}
+body {
+  color: $medium-gray;
+}
 
-.content-primary {}
+.delete-me {
+  @include align-items(center);
+  @include display(flex);
+  @include justify-content(center);
+  height: 100vh;
 
-.footer-primary {}
+  .inner {
+    text-align: center;
+
+    h1 {
+      font-weight: 200;
+    }
+  }
+}
