@@ -1,0 +1,26 @@
+/*
+ * This file should only comprise of @imports.
+ * Place all styles in appropriately named files.
+ * See the ToC in _application.scss
+ */
+
+
+
+/* Bourbon & Neat
+ * -----------------------------------------------------------------------------*/
+@import "bourbon";
+@import "base/grid-settings";
+@import "neat";
+@import "base/base";
+
+
+
+/* Components
+ * -----------------------------------------------------------------------------*/
+// @import "component/modal";
+
+
+
+/* Pages
+ * -----------------------------------------------------------------------------*/
+// @import "page/home";
