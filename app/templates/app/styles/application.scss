@@ -1,16 +1,8 @@
-/*
- * This file should only comprise of @imports.
- * Place all styles in appropriately named files.
- * See the ToC in _application.scss
- */
-
-
-
 /* Bourbon & Neat
  * -----------------------------------------------------------------------------*/
-@import "bourbon";
+@import "bourbon/dist/bourbon";
 @import "base/grid-settings";
-@import "neat";
+@import "neat/app/assets/stylesheets/neat";
 @import "base/base";
 
 
