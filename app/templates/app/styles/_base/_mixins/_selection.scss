@@ -1,6 +1,0 @@
-// Accepts styling for selected content
-@mixin selection {
-  .selection { @content }
-  ::selection { @content }
-  ::-moz-selection { @content }
-}
