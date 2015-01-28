@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html class="no-js">
+<!doctype html>
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ page.title }}</title>
-    <meta name="description" content="">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     {% include shared/styles.html %}
 
     <!-- build:js({app,.tmp}) /scripts/modernizr.js -->
-    <script src="/vendor/modernizr/modernizr.js"></script>
+      <script src="/vendor/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
 
-  <body>
-    {% include shared/header.html %}
-    {% include shared/nav.html %}
+  <body class="{{ page.body_class }}">
     {{ content }}
-    {% include shared/footer.html %}
 
     {% include shared/scripts.html %}<% if (googleAnalytics) { %>
     {% include shared/google-analytics.html %}<% } %>
