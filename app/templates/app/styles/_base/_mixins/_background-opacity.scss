@@ -1,5 +1,0 @@
-// Accept all color values for background opacity
-@mixin background-opacity($color, $opacity) {
-  background-color: $color;
-  background-color: rgba($color, $opacity);
-}
