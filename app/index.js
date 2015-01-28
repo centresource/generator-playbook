@@ -244,4 +244,9 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
   shelljs.cd('app/styles');
   shelljs.exec('bundle exec bitters install');
   shelljs.cd(root);
+
+  // Replace Rails-style @import of neat-helpers
+  var neatHelpers = shelljs.cat('app/styles/base/_grid-settings.scss');
+  var newImport   = neatHelpers.replace(/^@import 'neat-helpers';.*/, '@import "neat/app/assets/stylesheets/neat-helpers";');
+  newImport.to('app/styles/base/_grid-settings.scss');
 };
