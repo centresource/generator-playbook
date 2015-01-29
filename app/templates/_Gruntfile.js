@@ -18,10 +18,6 @@ module.exports = function (grunt) {
       coffee: {
         files: ['<%%= yeoman.app %>/scripts/**/*.coffee'],
         tasks: ['coffee:dist']
-      },
-      coffeeTest: {
-        files: ['test/spec/**/*.coffee'],
-        tasks: ['coffee:test']
       },<% } %>
       jekyll: {
         files: [
@@ -70,16 +66,6 @@ module.exports = function (grunt) {
           open: true,
           base: [
             '<%%= yeoman.dist %>'
-          ]
-        }
-      },
-      test: {
-        options: {
-          base: [
-            '.tmp',
-            '.jekyll',
-            'test',
-            '<%%= yeoman.app %>'
           ]
         }
       }
@@ -144,15 +130,6 @@ module.exports = function (grunt) {
           cwd: '<%%= yeoman.app %>/scripts',
           src: '**/*.coffee',
           dest: '.tmp/scripts',
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/spec',
-          src: '**/*.coffee',
-          dest: '.tmp/spec',
           ext: '.js'
         }]
       }
@@ -348,7 +325,6 @@ module.exports = function (grunt) {
       all: [
         'Gruntfile.js',
         '<%%= yeoman.app %>/scripts/**/*.js',
-        'test/spec/**/*.js',
         '!<%%= yeoman.app %>/scripts/vendor/**/*'
       ]
     },
@@ -412,13 +388,6 @@ module.exports = function (grunt) {
     'csslint:check'
   ]);
 
-  // No real tests yet. Add your own.
-  grunt.registerTask('test', [
-    // 'clean:server',
-    // 'concurrent:test',
-    // 'connect:test'
-  ]);
-
   grunt.registerTask('build', [
     'clean:dist',
     'jekyll:dist', // Jekyll cleans files from the target directory, so must run first
@@ -443,7 +412,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'check',
-    'test',
     'build'
   ]);
 };
