@@ -19,9 +19,6 @@ Serve your source locally into your browser. LiveReload will automatically load 
 ##### grunt check
 Check the quality of your source with tools like [JSLint](http://www.jslint.com/), [CSSLint](http://csslint.net/) and [csscss](http://zmoazeni.github.io/csscss/).
 
-##### grunt test
-Run any test that you have defined for your source.
-
 ##### grunt build
 Build the concatenated, minified production version of the source into the `dist` directory.<% if (deploy) { %>
 
