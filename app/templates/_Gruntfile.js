@@ -1,18 +1,8 @@
-// Generated on 2013-10-25 using generator-jekyllrb 0.4.0
 'use strict';
 
-// Directory reference:
-//   sass: styles<% if (jsPre === 'coffeescript') { %>
-//   coffeescript: scripts<% } else { %>
-//   javascript: scripts<% } %>
-//   images: images
-//   fonts: fonts
-
 module.exports = function (grunt) {
-  // Show elapsed time after tasks run
-  require('time-grunt')(grunt);
-  // Load all Grunt tasks
-  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt); // Show elapsed time after tasks run
+  require('load-grunt-tasks')(grunt); // Load all Grunt tasks
 
   grunt.initConfig({
     // Configurable paths
@@ -270,8 +260,7 @@ module.exports = function (grunt) {
             // Copy moves asset files and directories
             'images/**/*',
             'fonts/**/*',
-            // Like Jekyll, exclude files & folders prefixed with an underscore
-            '!**/_*{,/**}',
+            '!**/_*{,/**}', // Exclude files & folders prefixed with an underscore
             // Explicitly add any files your site needs for distribution here
             //'./vendor/jquery/jquery.js',
             'favicon.ico',
@@ -327,6 +316,14 @@ module.exports = function (grunt) {
               replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/scripts/'
             },
             {
+              match: /("|'?)\/?fonts\//g,
+              replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/fonts/'
+            },
+            {
+              match: /(=)("|'?)\/?images\//g,
+              replacement: '$1$2http://<%= ghOwner %>.github.io/<%= ghRepo %>/images/'
+            },
+            {
               match: /(<a[^>]*href="?)(\/)/g,
               replacement: '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>/'
             },
@@ -339,7 +336,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            src: ['dist/**/*.html', 'dist/scripts/*.js']
+            src: ['dist/**/*.html', 'dist/scripts/*.js', 'dist/styles/**/*.css']
           }
         ]
       }
@@ -366,7 +363,7 @@ module.exports = function (grunt) {
         verbose: true
       },
       check: {
-        src: ['.tmp/styles/screen.css']
+        src: ['.tmp/styles/application.css']
       }
     },
     csslint: {
@@ -374,7 +371,7 @@ module.exports = function (grunt) {
         csslintrc: '.csslintrc'
       },
       check: {
-        src: ['.tmp/styles/screen.css']
+        src: ['.tmp/styles/application.css']
       }
     },
     concurrent: {
@@ -424,8 +421,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    // Jekyll cleans files from the target directory, so must run first
-    'jekyll:dist',
+    'jekyll:dist', // Jekyll cleans files from the target directory, so must run first
     'concurrent:dist',
     'copy:assemble',
     'useminPrepare',
