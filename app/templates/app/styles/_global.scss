@@ -1,0 +1,22 @@
+body {
+  color: $medium-gray;
+}
+
+.delete-me {
+  @include align-items(center);
+  @include display(flex);
+  @include justify-content(center);
+  height: 100vh;
+
+  .inner {
+    text-align: center;
+
+    img {
+      margin-bottom: 0.15em;
+    }
+
+    h1 {
+      font-weight: 200;
+    }
+  }
+}

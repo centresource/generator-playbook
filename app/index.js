@@ -245,17 +245,13 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
   shelljs.exec('bundle exec bitters install');
   shelljs.cd(root);
 
-  // Install additional Sass files
-  shelljs.mv('app/styles/_base/*', 'app/styles/base/');
-  shelljs.mv('app/styles/base/_mixins/_*', 'app/styles/base/mixins/');
+  // Replace Rails-style @import of neat-helpers
+  var gridSettings = shelljs.cat('app/styles/base/_grid-settings.scss');
+  gridSettings = gridSettings.replace(/^@import 'neat-helpers';.*/, "@import 'neat/app/assets/stylesheets/neat-helpers';");
+  gridSettings.to('app/styles/base/_grid-settings.scss');
 
-  // Replace Rails style @import of neat-helpers
-  var neatHelpers = shelljs.cat('app/styles/base/_grid-settings.scss');
-  var newImport   = neatHelpers.replace(/^@import 'neat-helpers';.*/, '@import "neat/app/assets/stylesheets/neat-helpers";');
-  newImport.to('app/styles/base/_grid-settings.scss');
-
-  // Remove unused files and directories
-  shelljs.rm('-rf', 'app/styles/_base');
-  shelljs.rm('-rf', 'app/styles/base/_mixins');
-  shelljs.rm('-f',  'app/styles/base/_base.scss');
+  // Uncomment Neat grid-settings @import
+  var base = shelljs.cat('app/styles/base/_base.scss');
+  base = base.replace(/^\/\/ @import 'grid-settings';.*/, "@import 'grid-settings';");
+  base.to('app/styles/base/_base.scss');
 };
