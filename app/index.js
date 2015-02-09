@@ -106,31 +106,22 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   var prompts = [
     {
       name: 'deploy',
-      message: 'Use grunt-build-control for deployment?',
+      message: 'Setup GitHub Pages deployment?',
       type: 'confirm',
       default: false
-    },
-    {
-      name: 'deployHost',
-      type: 'list',
-      message: 'Host to deploy to',
-      choices: ['GitHub Pages', 'Generic remote'],
-      when: function (answers) {
-        return answers.deploy;
-      }
     },
     {
       name: 'ghOwner',
       message: 'GitHub repository owner',
       when: function (answers) {
-        return answers.deployHost === 'GitHub Pages';
+        return answers.deploy;
       }
     },
     {
       name: 'ghRepo',
       message: 'GitHub repository name',
       when: function (answers) {
-        return answers.deployHost === 'GitHub Pages';
+        return answers.deploy;
       }
     },
     {
@@ -139,14 +130,7 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       message: 'GitHub Project or User/Organization site?',
       choices: ['Project', 'User/Organization'],
       when: function(answers) {
-        return answers.deployHost == 'GitHub Pages';
-      }
-    },
-    {
-      name: 'remoteURL',
-      message: 'Remote URL',
-      when: function (answers) {
-        return answers.deployHost === 'Generic remote';
+        return answers.deploy;
       }
     },
     {
@@ -157,8 +141,6 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
           return 'gh-pages';
         } else if (answers.ghPagesProject === 'User/Organization') {
           return 'master';
-        } else {
-          return 'dist';
         }
       },
       when: function (answers) {
@@ -172,7 +154,6 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   this.prompt(prompts, function (props) {
 
     this.deploy         = props.deploy;
-    this.deployHost     = props.deployHost;
     this.ghOwner        = props.ghOwner;
     this.ghRepo         = props.ghRepo;
     this.deployBranch   = props.deployBranch;
@@ -181,11 +162,7 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       this.ghPagesProject = props.ghPagesProject.replace('/', '_').toLowerCase();
     }
 
-    if (this.deployHost === 'GitHub Pages') {
-      this.deployRemote = 'git@github.com:' + this.ghOwner + '/' + this.ghRepo + '.git';
-    } else {
-      this.deployRemote = props.remoteURL;
-    }
+    this.deployRemote = 'git@github.com:' + this.ghOwner + '/' + this.ghRepo + '.git';
 
     cb();
   }.bind(this));
@@ -207,7 +184,7 @@ PlaybookGenerator.prototype.app = function app() {
   this.copy('bowerrc', '.bowerrc');
   this.copy('csslintrc', '.csslintrc');
   this.copy('gitignore', '.gitignore');
-  this.template('_Gruntfile.js', 'Gruntfile.js');
+  this.template('_Gulpfile.js', 'Gulpfile.js');
   this.template('config.yml', '_config.yml');
   this.template('_config.build.yml', '_config.build.yml');
   this.template('_package.json', 'package.json');
