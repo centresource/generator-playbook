@@ -14,10 +14,15 @@ var PlaybookGenerator = module.exports = function PlaybookGenerator(args, option
     return shelljs.which(depend);
   });
 
-  // Exit if Ruby dependencies aren't installed
-  if (!dependenciesInstalled) {
+  var isRubyTwoSpecified = function rubyTwoInstalled() {
+    var rubyVersion = shelljs.exec('ruby --version', { silent: true }).output;
+    return !/^ruby 2/.test(rubyVersion)
+  };
+
+  // Exit if Ruby < 2.x dependencies aren't installed
+  if (!dependenciesInstalled || !isRubyTwoSpecified) {
     console.log('Looks like you\'re missing some dependencies.' +
-      '\nMake sure ' + chalk.white('Ruby') + ' and the ' + chalk.white('Bundler gem') + ' are installed, then run again.');
+      '\nMake sure ' + chalk.white('Ruby (>= 2.0.0)') + ' and the ' + chalk.white('Bundler gem') + ' are installed, then run again.');
     shelljs.exit(1);
   }
 
