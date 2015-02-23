@@ -199,7 +199,6 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 
 PlaybookGenerator.prototype.templates = function templates() {
   this.template('conditional/template/default.html', 'app/_layouts/default.html');
-  this.template('conditional/template/index.html', 'app/index.html');
 
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/shared/google-analytics.html');
@@ -208,9 +207,9 @@ PlaybookGenerator.prototype.templates = function templates() {
 
 PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {
   if (this.jsPre === 'coffeescript') {
-    this.copy('conditional/coffee/app.coffee', 'app/scripts/app.coffee');
+    this.copy('conditional/coffee/application.coffee', 'app/scripts/application.coffee');
   } else {
-    this.copy('conditional/javascript/app.js', 'app/scripts/app.js');
+    this.copy('conditional/javascript/application.js', 'app/scripts/application.js');
   }
 };
 

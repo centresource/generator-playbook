@@ -13,8 +13,9 @@ author:
   email: <%= authorEmail %>
 
 # Exclude directories and/or files from the conversion.
-# Grunt moves image files and the styles/scripts directories.
-exclude: ['node_modules', 'styles', 'scripts', '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico']
+# Gulp moves styles, scripts, images and fonts directories.
+exclude: ['styles', 'scripts', 'images', 'fonts']
+keep_files: ['styles', 'scripts', 'images', 'fonts']
 
 # Force inclusion of directories and/or files in the conversion.
 # .htaccess is a good example since dotfiles are excluded by default.
