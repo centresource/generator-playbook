@@ -1,5 +1,16 @@
 # Contributing to Playbook
 
+### File an Issue
+If playbook is exhibiting unexpected behavior, please file an issue that allows the maintainers to reproduce the results you see.
+1. Pick a title that describes intent clearly.
+2. Please describe the environment-- which versions of OS, Ruby, Node, and Generator-Playbook are you using?
+3. Describe in as much detail as possible the steps you took to reach the unexpected behavior.
+4. Tell us what the unexpected behavior was, e.g. a stack trace with the error or a screen shot.
+5. Expound upon any steps you took to remedy the issue.
+
+You may also use issues to submit feature requests.
+
+
 ### Get Started
 1. Clone the repository
 2. Make your changes in a topic branch
