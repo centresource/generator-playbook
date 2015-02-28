@@ -6,42 +6,31 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     runSequence = require('run-sequence'),
     del = require('del'),
-    neat = require('node-neat').includePaths,
-    production = false;
+    neat = require('node-neat').includePaths;
 
-var paths = {
-  app:     './app',
-  html:    './app/**/*.html',
-  styles:  './app/styles/**/*.scss',<% if (jsPre === 'coffeescript') { %>
-  scripts: './app/scripts/**/*.coffee',<% } else { %>
-  scripts: './app/scripts/**/*.js',<% } %>
-  images:  './app/images/**/*.{png,gif,jpg,jpeg,svg}',
-  fonts:   './app/fonts/**/*.{eot*,otf,svg,ttf,woff}',
-  vendor:  './vendor'
-}
+var production = false,
+    paths = {
+      app:     'app',
+      html:    'app/**/*.html',
+      styles:  'app/styles/**/*.scss',<% if (jsPre === 'coffeescript') { %>
+      scripts: 'app/scripts/**/*.coffee',<% } else { %>
+      scripts: 'app/scripts/**/*.js',<% } %>
+      images:  'app/images/**/*.{png,gif,jpg,jpeg,svg}',
+      fonts:   'app/fonts/**/*.{eot*,otf,svg,ttf,woff}',
+      vendor:  'vendor'
+    }
 
-gulp.task('jekyll', function (cb) {
+gulp.task('html', function (cb) {
+  var config = (production) ? '_config.yml,_config.build.yml' : '_config.yml',
+      dest   = (production) ? 'dist' : '.tmp';
+
   var spawn = require('child_process').spawn,
-      jekyll = spawn('jekyll', ['build', '-q', '--config', '_config.yml', '-s', paths.app, '-d', './dist'], {stdio: 'inherit'});
+      jekyll = spawn('jekyll', ['build', '-q', '--config', config, '-s', paths.app, '-d', dest], { stdio: 'inherit' });
 
   jekyll.on('exit', function (code) {
     cb(code === 0 ? null : 'ERROR: Jekyll process exited with code: ' + code);
+    browserSync.reload();
   });
-});
-
-gulp.task('html', ['jekyll'], function () {
-  // Make useref work!! Should it be in a separate task using streams?
-  var assets = $.useref.assets();
-
-  return gulp.src('./dist/**/*.html')
-    .pipe(assets)
-    .pipe(assets.restore())
-    .pipe($.if(production, $.useref()))
-    // .pipe($.if(production, $.htmlmin({
-    //   collapseWhitespace: true
-    // })))
-    .pipe(gulp.dest('./dist'))
-    .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('styles', function () {
@@ -51,19 +40,17 @@ gulp.task('styles', function () {
       includePaths: [paths.styles].concat(neat),
       onError: console.error.bind(console, 'Sass error:')
     }))
-    .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    // .pipe($.if(production, $.minifyCss()))
-    .pipe(gulp.dest('./dist/styles'))
+    .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(gulp.dest('.tmp/styles'))
     .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('scripts', function () {
-  return gulp.src(paths.scripts)
-    .pipe($.coffee()).on('error', function(err) {})
+  return gulp.src(paths.scripts)<% if (jsPre === 'coffeescript') { %>
+    .pipe($.coffee()).on('error', function(err) {})<% } %>
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('default'))
-    // .pipe($.if(production, $.uglify()))
-    .pipe(gulp.dest('./dist/scripts'))
+    .pipe(gulp.dest('.tmp/scripts'))
     .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -74,38 +61,46 @@ gulp.task('images', function () {
       svgoPlugins: [{ removeViewBox: false }],
       use: []
     }))
-    .pipe(gulp.dest('./dist/images'));
+    .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('fonts', function () {
   return gulp.src(paths.fonts)
-    .pipe(gulp.dest('./dist/fonts'));
+    .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('clean', function (cb) {
-  del(['dist'], cb);
+  del(['.tmp', 'dist'], cb);
 });
 
-gulp.task('build', ['html', 'styles', 'scripts', 'images', 'fonts'], function () {
-  return gulp.src('./dist/**/*')
+gulp.task('optimize', ['html', 'styles', 'scripts', 'images', 'fonts'], function () {
+  var assets = $.useref.assets({ searchPath: ['.tmp', 'dist', '.'] });
+
+  return gulp.src('dist/**/*.html')
+    .pipe(assets)
+    .pipe($.if('*.css', $.minifyCss()))
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.rev())
+    .pipe(assets.restore())
+    .pipe($.useref())
+    .pipe($.revReplace())
+    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build', ['optimize'], function () {
+  return gulp.src('dist/**/*')
     .pipe($.size({
       title: 'build',
       gzip: true
     }));
 });
 
-gulp.task('browser-sync', ['build'], function () {
-  browserSync({
-    open: false,
-    notify: true,
-    port: 9000,
-    server: {
-      baseDir: ['./dist'],
-      routes: {
-        './vendor': 'vendor'
-      }
-    }
-  });
+gulp.task('gh-pages', function () {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages(<% if (ghPagesType === 'user_organization') { %>{
+      branch: 'master'
+    }<% } %>))
 });
 
 gulp.task('watch', function () {
@@ -116,15 +111,29 @@ gulp.task('watch', function () {
   gulp.watch(paths.fonts,   ['fonts']);
 });
 
-gulp.task('serve', ['clean', 'watch'], function () {
-  runSequence('browser-sync');
+gulp.task('browser-sync', ['html', 'styles', 'scripts'], function () {
+  browserSync({
+    notify: false,
+    port: 9000,
+    server: {
+      baseDir: ['.tmp', paths.app],
+      routes: {
+        '/vendor': 'vendor'
+      }
+    }
+  });
 });
 
-gulp.task('deploy', function (cb) {
+gulp.task('serve', function () {
+  runSequence('clean', ['browser-sync', 'watch']);
+});<% if (ghPages) { %>
+
+gulp.task('deploy', function () {
   production = true;
-  runSequence('clean', 'build', cb);
-});
+  runSequence('clean', 'build', 'gh-pages');
+});<% } %>
 
-gulp.task('default', function (cb) {
-  runSequence('clean', 'build', cb);
+gulp.task('default', function () {
+  production = true;
+  runSequence('clean', 'build');
 });

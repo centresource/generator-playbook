@@ -105,46 +105,18 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   var cb = this.async();
   var prompts = [
     {
-      name: 'deploy',
-      message: 'Setup GitHub Pages deployment?',
+      name: 'ghPages',
+      message: 'Deploy to GitHub Pages?',
       type: 'confirm',
       default: false
     },
     {
-      name: 'ghOwner',
-      message: 'GitHub repository owner',
-      when: function (answers) {
-        return answers.deploy;
-      }
-    },
-    {
-      name: 'ghRepo',
-      message: 'GitHub repository name',
-      when: function (answers) {
-        return answers.deploy;
-      }
-    },
-    {
-      name: 'ghPagesProject',
+      name: 'ghPagesType',
       type: 'list',
-      message: 'GitHub Project or User/Organization site?',
+      message: 'Project or User/Organization site?',
       choices: ['Project', 'User/Organization'],
       when: function(answers) {
-        return answers.deploy;
-      }
-    },
-    {
-      name: 'deployBranch',
-      message: 'Branch to deploy to',
-      default: function(answers) {
-        if (answers.ghPagesProject === 'Project') {
-          return 'gh-pages';
-        } else if (answers.ghPagesProject === 'User/Organization') {
-          return 'master';
-        }
-      },
-      when: function (answers) {
-        return answers.deploy;
+        return answers.ghPages;
       }
     }
   ]
@@ -152,17 +124,13 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
   console.log(chalk.yellow('\nDeployment options.') + ' →');
 
   this.prompt(prompts, function (props) {
+    this.ghPages  = props.ghPages;
+    this.ghBranch = (props.ghPagesType === 'Project') ? 'gh-pages' : 'master';
+    this.ghRepo   = 'pt2';
 
-    this.deploy         = props.deploy;
-    this.ghOwner        = props.ghOwner;
-    this.ghRepo         = props.ghRepo;
-    this.deployBranch   = props.deployBranch;
-
-    if (props.ghPagesProject) {
-      this.ghPagesProject = props.ghPagesProject.replace('/', '_').toLowerCase();
+    if (props.ghPagesType) {
+      this.ghPagesType = props.ghPagesType.replace('/', '_').toLowerCase();
     }
-
-    this.deployRemote = 'git@github.com:' + this.ghOwner + '/' + this.ghRepo + '.git';
 
     cb();
   }.bind(this));
