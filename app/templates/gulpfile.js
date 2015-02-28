@@ -33,13 +33,18 @@ gulp.task('html', function (cb) {
   });
 });
 
-gulp.task('styles', function () {
-  return gulp.src([paths.styles])
+gulp.task('styles', function () {<% if (sassComp === 'libsass') { %>
+  return gulp.src(paths.styles)
     .pipe($.sass({
       style: 'nested',
       includePaths: [paths.styles].concat(neat),
       onError: console.error.bind(console, 'Sass error:')
-    }))
+    }))<% } else { %>
+  return $.rubySass('app/styles/', {
+      style: 'nested',
+      loadPath: [paths.styles].concat(neat),
+      onError: console.error.bind(console, 'Sass error:')
+    })<% } %>
     .pipe($.autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(browserSync.reload({ stream: true }));
@@ -94,14 +99,14 @@ gulp.task('build', ['optimize'], function () {
       title: 'build',
       gzip: true
     }));
-});
+});<% if (ghPages) { %>
 
 gulp.task('gh-pages', function () {
   return gulp.src('dist/**/*')
     .pipe($.ghPages(<% if (ghPagesType === 'user_organization') { %>{
       branch: 'master'
     }<% } %>))
-});
+});<% } %>
 
 gulp.task('watch', function () {
   gulp.watch(paths.html,    ['html']);

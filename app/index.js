@@ -55,7 +55,6 @@ PlaybookGenerator.prototype.askForUser = function askForUser() {
   console.log(chalk.yellow('\nTell us a little about the project.') + ' →');
 
   this.prompt(prompts, function (props) {
-
     this.authorName  = props.authorName;
     this.authorEmail = props.authorEmail;
 
@@ -89,13 +88,9 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
   console.log(chalk.yellow('\nPreprocessors and tools.') + ' →');
 
   this.prompt(prompts, function (props) {
+    this.jsPre           = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
+    this.sassComp        = props.sassComp.toLowerCase();
     this.googleAnalytics = props.googleAnalytics;
-
-    // Multiple choice 'None' to false
-    this.jsPre = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
-
-    // Lowercase sassComp variable
-    this.sassComp = props.sassComp.toLowerCase();
 
     cb();
   }.bind(this));
@@ -148,16 +143,16 @@ PlaybookGenerator.prototype.rubyDependencies = function rubyDependencies() {
 
 PlaybookGenerator.prototype.app = function app() {
   this.directory('app', 'app');
-  this.copy('Gemfile', 'Gemfile');
   this.copy('bowerrc', '.bowerrc');
   this.copy('csslintrc', '.csslintrc');
   this.copy('gitignore', '.gitignore');
-  this.template('_Gulpfile.js', 'Gulpfile.js');
-  this.template('config.yml', '_config.yml');
+  this.copy('bower.json', 'bower.json');
+  this.template('README.md', 'README.md');
+  this.template('package.json', 'package.json');
+  this.template('Gemfile', 'Gemfile');
+  this.template('gulpfile.js', 'gulpfile.js');
+  this.template('_config.yml', '_config.yml');
   this.template('_config.build.yml', '_config.build.yml');
-  this.template('_package.json', 'package.json');
-  this.template('_bower.json', 'bower.json');
-  this.template('_README.md', 'README.md');
 };
 
 PlaybookGenerator.prototype.projectfiles = function projectfiles() {
@@ -166,11 +161,11 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 };
 
 PlaybookGenerator.prototype.templates = function templates() {
-  this.template('conditional/template/default.html', 'app/_layouts/default.html');
+  this.template('app/_layouts/default.html', 'app/_layouts/default.html');
 
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/shared/google-analytics.html');
-  };
+  }
 };
 
 PlaybookGenerator.prototype.jsPreprocessor = function jsPreprocessor() {
