@@ -113,19 +113,31 @@ PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
       when: function(answers) {
         return answers.ghPages;
       }
+    },
+    {
+      name: 'ghOwner',
+      message: 'GitHub repository owner',
+      when: function (answers) {
+        return answers.ghPages;
+      }
+    },
+    {
+      name: 'ghRepo',
+      message: 'GitHub repository name',
+      when: function (answers) {
+        return answers.ghPages;
+      }
     }
   ]
 
   console.log(chalk.yellow('\nDeployment options.') + ' →');
 
   this.prompt(prompts, function (props) {
-    this.ghPages  = props.ghPages;
-    this.ghBranch = (props.ghPagesType === 'Project') ? 'gh-pages' : 'master';
-    this.ghRepo   = 'pt2';
-
-    if (props.ghPagesType) {
-      this.ghPagesType = props.ghPagesType.replace('/', '_').toLowerCase();
-    }
+    this.ghPagesType = (props.ghPagesType) ? props.ghPagesType.replace('/', '_').toLowerCase() : null;
+    this.ghPages     = props.ghPages;
+    this.ghBranch    = (props.ghPagesType === 'project') ? 'gh-pages' : 'master';
+    this.ghOwner     = props.ghOwner;
+    this.ghRepo      = props.ghRepo;
 
     cb();
   }.bind(this));

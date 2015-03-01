@@ -3,7 +3,12 @@
 
 # Note: Grunt handles some Jekyll configuration. If you set something here and
 # it doesn't work, check if it is set in the Gruntfile.
-
+<% if (ghPages && ghPagesType === 'project') { %>
+# Configured to be used with absolute paths in Jekyll. This prevents
+# broken paths once the site is deploy to GitHub Pages. More info:
+# http://jekyllrb.com/docs/github-pages/#project-page-url-structure
+baseurl: '/<%= ghRepo %>'
+<% } %>
 # Publish posts with future date.
 future: false
 

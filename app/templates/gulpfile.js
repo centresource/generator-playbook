@@ -18,13 +18,13 @@ var production = false,
       images:  'app/images/**/*.{png,gif,jpg,jpeg,svg}',
       fonts:   'app/fonts/**/*.{eot*,otf,svg,ttf,woff}',
       vendor:  'vendor'
-    }
+    };
 
 gulp.task('html', function (cb) {
   var config = (production) ? '_config.yml,_config.build.yml' : '_config.yml',
       dest   = (production) ? 'dist' : '.tmp';
 
-  var spawn = require('child_process').spawn,
+  var spawn  = require('child_process').spawn,
       jekyll = spawn('jekyll', ['build', '-q', '--config', config, '-s', paths.app, '-d', dest], { stdio: 'inherit' });
 
   jekyll.on('exit', function (code) {
@@ -91,9 +91,19 @@ gulp.task('optimize', ['html', 'styles', 'scripts', 'images', 'fonts'], function
     .pipe($.revReplace())
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
-});
+});<% if (ghPages && ghPagesType === 'project') { %>
 
-gulp.task('build', ['optimize'], function () {
+// Updates absolute asset paths for GitHub Pages' sub-directory
+gulp.task('replace', ['optimize'], function () {
+  var ghPages = '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>';
+
+  return gulp.src('dist/**/*.html')
+    .pipe($.replace(/("|'?)\/?styles\//g,  ghPages + '/styles/'))
+    .pipe($.replace(/("|'?)\/?scripts\//g, ghPages + '/scripts/'))
+    .pipe(gulp.dest('dist'));
+});<% } %>
+
+gulp.task('build', ['replace'], function () {
   return gulp.src('dist/**/*')
     .pipe($.size({
       title: 'build',

@@ -19,13 +19,7 @@ keep_files: ['styles', 'scripts', 'images', 'fonts']
 
 # Force inclusion of directories and/or files in the conversion.
 # .htaccess is a good example since dotfiles are excluded by default.
-include: ['.htaccess']<% if (ghPages && ghPagesType === 'project') { %>
-
-# Configured to be used with absolute paths in Jekyll. This prevents
-# broken paths once the site is deploy to GitHub Pages. More info:
-# http://jekyllrb.com/docs/github-pages/#project-page-url-structure
-baseurl: '/<% ghRepo %>'
-<% } %>
+include: ['.htaccess']
 
 # Default post path style
 # date  /:categories/:year/:month/:day/:title.html
