@@ -1,6 +1,6 @@
 # <%= appName %>
 
-[Describe the project.]
+A Playbook project.
 
 ## Project Setup
 This project utilizes Playbook, reference Playbook's [setup guide](https://github.com/centresource/generator-playbook#get-started).
@@ -20,4 +20,4 @@ Serve your source locally into your browser. BrowserSync will automatically load
 Build the concatenated, minified production version of the source into the `dist` directory.<% if (ghPages) { %>
 
 ##### gulp deploy
-Deploy the production version of the source to [GitHub Pages](http://pages.github.com/) via [gulp-gh-pages](https://www.npmjs.com/package/gulp-gh-pages).<% } %>
+Deploy the production version of the source to [GitHub Pages](http://pages.github.com/).<% } %>
