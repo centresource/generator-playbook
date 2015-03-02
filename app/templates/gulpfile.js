@@ -93,7 +93,7 @@ gulp.task('optimize', ['html', 'styles', 'scripts', 'images', 'fonts'], function
     .pipe(gulp.dest('dist'));
 });<% if (ghPages && ghPagesType === 'project') { %>
 
-// Updates absolute asset paths for GitHub Pages' sub-directory
+// Update absolute asset paths for GitHub Pages subdirectory
 gulp.task('replace', ['optimize'], function () {
   var ghPages = '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>';
 
