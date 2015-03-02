@@ -1,11 +1,11 @@
 'use strict';
-var util = require('util');
-var path = require('path');
-var chalk = require('chalk');
-var yeoman = require('yeoman-generator');
-var globule = require('globule');
-var shelljs = require('shelljs');
 
+var util    = require('util'),
+    path    = require('path'),
+    chalk   = require('chalk'),
+    yeoman  = require('yeoman-generator'),
+    globule = require('globule'),
+    shelljs = require('shelljs');
 
 var PlaybookGenerator = module.exports = function PlaybookGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
@@ -161,7 +161,6 @@ PlaybookGenerator.prototype.app = function app() {
   this.copy('bower.json', 'bower.json');
   this.template('README.md', 'README.md');
   this.template('package.json', 'package.json');
-  this.template('Gemfile', 'Gemfile');
   this.template('gulpfile.js', 'gulpfile.js');
   this.template('_config.yml', '_config.yml');
   this.template('_config.build.yml', '_config.build.yml');
@@ -196,13 +195,8 @@ PlaybookGenerator.prototype.installBitters = function installBitters() {
   shelljs.exec('bundle exec bitters install');
   shelljs.cd(root);
 
-  // Replace Rails-style @import of neat-helpers
-  var gridSettings = shelljs.cat('app/styles/base/_grid-settings.scss');
-  gridSettings = gridSettings.replace(/^@import 'neat-helpers';.*/, "@import 'neat/app/assets/stylesheets/neat-helpers';");
-  gridSettings.to('app/styles/base/_grid-settings.scss');
-
   // Uncomment Neat grid-settings @import
   var base = shelljs.cat('app/styles/base/_base.scss');
-  base = base.replace(/^\/\/ @import 'grid-settings';.*/, "@import 'grid-settings';");
+  base = base.replace(/\/\/ @import "grid-settings";/, '@import "grid-settings";');
   base.to('app/styles/base/_base.scss');
 };

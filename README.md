@@ -45,4 +45,6 @@ Serve your source locally into your browser. BrowserSync will automatically load
 Build the concatenated, minified production version of the source into the `dist` directory.
 
 ##### gulp deploy
-Deploy the production version of the source to [GitHub Pages](http://pages.github.com/).
+Deploy the production build of the source to [GitHub Pages](http://pages.github.com/).
+
+If you choose to deploy a GitHub User/Organization Page, your source must be tracked in a branch other than `master`. User/Organization Pages serve the `master` branch to users visiting your Page. For more information, please see the [GitHub Pages Help](https://help.github.com/articles/user-organization-and-project-pages#project-pages).
