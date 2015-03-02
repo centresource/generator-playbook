@@ -2,6 +2,7 @@
 .ruby-gemset
 .npmignore
 **/.DS_Store
+test/temp
 
 # Ignore hidden folders #
 # This takes care of .tmp, .sass-cache, and many others #
