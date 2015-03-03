@@ -24,7 +24,7 @@ var PlaybookGenerator = module.exports = function PlaybookGenerator(args, option
   this.gitInfo = {
     name: this.user.git.username,
     email: this.user.git.email
-  }
+  };
 
   this.on('end', function () {
     this.installDependencies({ skipInstall: options['skip-install'] });
@@ -37,19 +37,19 @@ var PlaybookGenerator = module.exports = function PlaybookGenerator(args, option
 util.inherits(PlaybookGenerator, yeoman.generators.Base);
 
 PlaybookGenerator.prototype.askForUser = function askForUser() {
-  var cb = this.async();
-  var prompts = [
-    {
-      name: 'authorName',
-      message: 'What is your name?',
-      default: this.gitInfo.name
-    },
-    {
-      name: 'authorEmail',
-      message: 'What is your email?',
-      default: this.gitInfo.email
-    }
-  ];
+  var cb = this.async(),
+      prompts = [
+        {
+          name: 'authorName',
+          message: 'What is your name?',
+          default: this.gitInfo.name
+        },
+        {
+          name: 'authorEmail',
+          message: 'What is your email?',
+          default: this.gitInfo.email
+        }
+      ];
 
   console.log(this.yeoman);
   console.log(chalk.yellow('\nTell us a little about the project.') + ' →');
@@ -63,27 +63,27 @@ PlaybookGenerator.prototype.askForUser = function askForUser() {
 };
 
 PlaybookGenerator.prototype.askForTools = function askForTools() {
-  var cb = this.async();
-  var prompts = [
-    {
-      name: 'jsPre',
-      type: 'list',
-      message: 'JavaScript preproccesor',
-      choices: ['None', 'CoffeeScript']
-    },
-    {
-      name: 'sassComp',
-      type: 'list',
-      message: 'Sass compiler',
-      choices: ['Ruby', 'LibSass']
-    },
-    {
-      name: 'googleAnalytics',
-      type: 'confirm',
-      message: 'Include Google Analytics?',
-      default: false
-    }
-  ]
+  var cb = this.async(),
+      prompts = [
+        {
+          name: 'jsPre',
+          type: 'list',
+          message: 'JavaScript preproccesor',
+          choices: ['None', 'CoffeeScript']
+        },
+        {
+          name: 'sassComp',
+          type: 'list',
+          message: 'Sass compiler',
+          choices: ['Ruby', 'LibSass']
+        },
+        {
+          name: 'googleAnalytics',
+          type: 'confirm',
+          message: 'Include Google Analytics?',
+          default: false
+        }
+      ];
 
   console.log(chalk.yellow('\nPreprocessors and tools.') + ' →');
 
@@ -97,38 +97,38 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
 };
 
 PlaybookGenerator.prototype.askForDeployment = function askForDeployment() {
-  var cb = this.async();
-  var prompts = [
-    {
-      name: 'ghPages',
-      message: 'Deploy to GitHub Pages?',
-      type: 'confirm',
-      default: false
-    },
-    {
-      name: 'ghPagesType',
-      type: 'list',
-      message: 'Project or User/Organization site?',
-      choices: ['Project', 'User/Organization'],
-      when: function(answers) {
-        return answers.ghPages;
-      }
-    },
-    {
-      name: 'ghOwner',
-      message: 'GitHub repository owner',
-      when: function (answers) {
-        return answers.ghPages;
-      }
-    },
-    {
-      name: 'ghRepo',
-      message: 'GitHub repository name',
-      when: function (answers) {
-        return answers.ghPages;
-      }
-    }
-  ]
+  var cb = this.async(),
+      prompts = [
+        {
+          name: 'ghPages',
+          message: 'Deploy to GitHub Pages?',
+          type: 'confirm',
+          default: false
+        },
+        {
+          name: 'ghPagesType',
+          type: 'list',
+          message: 'Project or User/Organization site?',
+          choices: ['Project', 'User/Organization'],
+          when: function(answers) {
+            return answers.ghPages;
+          }
+        },
+        {
+          name: 'ghOwner',
+          message: 'GitHub repository owner',
+          when: function (answers) {
+            return answers.ghPages;
+          }
+        },
+        {
+          name: 'ghRepo',
+          message: 'GitHub repository name',
+          when: function (answers) {
+            return answers.ghPages;
+          }
+        }
+      ];
 
   console.log(chalk.yellow('\nDeployment options.') + ' →');
 

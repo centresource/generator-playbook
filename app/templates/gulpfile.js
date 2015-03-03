@@ -22,9 +22,8 @@ var production = false,
 
 gulp.task('html', function (cb) {
   var config = (production) ? '_config.yml,_config.build.yml' : '_config.yml',
-      dest   = (production) ? 'dist' : '.tmp';
-
-  var spawn  = require('child_process').spawn,
+      dest   = (production) ? 'dist' : '.tmp',
+      spawn  = require('child_process').spawn,
       jekyll = spawn('jekyll', ['build', '-q', '--config', config, '-s', paths.app, '-d', dest], { stdio: 'inherit' });
 
   jekyll.on('exit', function (code) {
