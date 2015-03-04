@@ -1,6 +1,6 @@
 # Playbook
 
-Playbook is a Yeoman generator to get you building interfaces faster. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
+Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
 
 [Gulp](http://gulpjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
 
@@ -39,12 +39,12 @@ yo playbook
 
 ### Gulp Tasks
 ##### gulp serve
-Serve your source locally into your browser. BrowserSync will automatically load any changes to HTML, CSS and JavaScript that you make.
+Serve your source locally into your browser. BrowserSync automatically loads any changes to HTML, CSS and JavaScript that you make.
 
 ##### gulp build
-Build the concatenated, minified production version of the source into the `dist` directory.
+Build the concatenated, minified production version of your source into the `dist` directory.
 
 ##### gulp deploy
-Deploy the production build of the source to [GitHub Pages](http://pages.github.com/).
+Deploy the production build of your source to [GitHub Pages](http://pages.github.com/).
 
 If you choose to deploy a GitHub User/Organization Page, your source must be tracked in a branch other than `master`. User/Organization Pages serve the `master` branch to users visiting your Page. For more information, please see the [GitHub Pages Help](https://help.github.com/articles/user-organization-and-project-pages#project-pages).
