@@ -1,7 +1,7 @@
 {
   "name": "generator-playbook",
   "version": "2.0.0",
-  "description": "A Yeoman generator for prototyping and building static sites.",
+  "description": "A Yeoman generator for prototyping and building experiences.",
   "keywords": [
     "yeoman-generator",
     "gulp",
