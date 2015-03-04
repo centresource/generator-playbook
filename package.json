@@ -1,7 +1,7 @@
 {
   "name": "generator-playbook",
   "version": "2.0.0",
-  "description": "A Yeoman generator for a Jekyll site utilizing thoughtbot's Bourbon toolset.",
+  "description": "A Yeoman generator for prototyping and building static sites.",
   "keywords": [
     "yeoman-generator",
     "gulp",
@@ -15,6 +15,7 @@
     "web",
     "site",
     "prototype",
+    "prototyping",
     "sass",
     "coffeescript",
     "libsass"
