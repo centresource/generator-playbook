@@ -1,8 +1,8 @@
 # Playbook
 
-Playbook is a Yeoman generator to get you building interfaces faster. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
+Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
 
-[Grunt](http://gruntjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
+[Gulp](http://gulpjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
 
 ### Prerequisites
 If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoman.io/) `>=1.1.2`, [Ruby](https://www.ruby-lang.org/en/) `>=2.0` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
@@ -18,7 +18,6 @@ npm install -g generator-playbook
 ````
 
 ### Update
-
 If you already have generator-playbook installed, please upgrade before
 generating another site to get the latest updates.
 
@@ -38,17 +37,14 @@ yo playbook
 
 *Should you run into an error such as `command yo not found` it may be related to a path issue when installing Node.js via Homebrew. Please refer to the top answer on this [StackOverflow question](http://stackoverflow.com/questions/15846076/command-not-found-after-installation).*
 
-### Grunt Tasks
-##### grunt serve
-Serve your source locally into your browser. LiveReload will automatically load any changes to HTML, CSS and JavaScript that you make.
+### Gulp Tasks
+##### gulp serve
+Serve your source locally into your browser. BrowserSync automatically loads any changes to HTML, CSS and JavaScript that you make.
 
-##### grunt check
-Check the quality of your source with tools like [JSLint](http://www.jslint.com/), [CSSLint](http://csslint.net/) and [csscss](http://zmoazeni.github.io/csscss/).
+##### gulp build
+Build the concatenated, minified production version of your source into the `dist` directory.
 
-##### grunt build
-Build the concatenated, minified production version of the source into the `dist` directory.
+##### gulp deploy
+Deploy the production build of your source to [GitHub Pages](http://pages.github.com/).
 
-##### grunt deploy
-Deploy the production version of the source to [GitHub Pages](http://pages.github.com/). This ability is configurable during Playbook generation.
-
-If you choose to utilize `grunt-build-control` to deploy a GitHub Pages user/organization site, your source must live in a branch other than `master`. GitHub Pages [user/organization sites](https://help.github.com/articles/user-organization-and-project-pages#project-pages) serve the files found in the `master` branch to the browser.
+If you choose to deploy a GitHub User/Organization Page, your source must be tracked in a branch other than `master`. User/Organization Pages serve the `master` branch to users visiting your Page. For more information, please see the [GitHub Pages Help](https://help.github.com/articles/user-organization-and-project-pages#project-pages).

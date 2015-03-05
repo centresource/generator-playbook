@@ -1,9 +1,14 @@
 # Build Jekyll configuration
-# These settings override _config.yml on `grunt build`
+# These settings override _config.yml on `gulp build`
 
-# Note: Grunt handles some Jekyll configuration. If you set something here and
-# it doesn't work, check if it is set in the Gruntfile.
-
+# Note: Gulp handles some Jekyll configuration. If you set something here and
+# it doesn't work, check if it is set in the gulpfile.
+<% if (ghPages && ghPagesType === 'project') { %>
+# Prepend this baseurl to absolute paths to prevent broken paths once
+# the site is deployed to GitHub Pages. Additional info:
+# http://jekyllrb.com/docs/github-pages/#project-page-url-structure
+baseurl: '/<%= ghRepo %>'
+<% } %>
 # Publish posts with future date.
 future: false
 

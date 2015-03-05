@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
 gem 'jekyll', '~> 2.5'
-gem 'redcarpet'
-gem 'csscss', '~> 1.3'<% if (sassComp === 'ruby') { %>
-gem 'sass', '~> 3.3.8'<% } %>
-gem 'bitters', '0.10.0'
+gem 'redcarpet'<% if (sassComp === 'ruby') { %>
+gem 'sass', '~> 3.4.13'<% } %>
+gem 'bitters', '1.0.0'
