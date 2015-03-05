@@ -91,8 +91,8 @@ gulp.task('optimize', ['html', 'styles', 'scripts', 'images', 'fonts'], function
     .pipe($.revReplace())
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
-});<% if (ghPages && ghPagesType === 'project') { %>
-
+});
+<% if (ghPages && ghPagesType === 'project') { %>
 // Update absolute asset paths for GitHub Pages subdirectory
 gulp.task('replace', ['optimize'], function () {
   var ghPages = '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>';
@@ -101,9 +101,10 @@ gulp.task('replace', ['optimize'], function () {
     .pipe($.replace(/("|'?)\/?styles\//g,  ghPages + '/styles/'))
     .pipe($.replace(/("|'?)\/?scripts\//g, ghPages + '/scripts/'))
     .pipe(gulp.dest('dist'));
-});<% } %>
+});
 
-gulp.task('build', ['replace'], function () {
+gulp.task('build', ['replace'], function () {<% } else { %>
+gulp.task('build', ['optimize'], function () {<% } %>
   return gulp.src('dist/**/*')
     .pipe($.size({
       title: 'build',
