@@ -5,7 +5,7 @@ Playbook is a Yeoman generator to get you building interfaces faster. [Jekyll](h
 [Grunt](http://gruntjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
 
 ### Prerequisites
-If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoman.io/) `>=1.1.2`, [Ruby](https://www.ruby-lang.org/en/) `>=1.9` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
+If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoman.io/) `>=1.1.2`, [Ruby](https://www.ruby-lang.org/en/) `>=2.0` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
 
 - [Node.js](http://davidcalhoun.me/2013/12/16/developer-tools-homebrew/)
 - [Yeoman](http://yeoman.io/learning/index.html)
