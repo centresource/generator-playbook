@@ -1,9 +1,9 @@
 # Base Jekyll configuration
 
-# Grunt handles some Jekyll configuration. If you set something here and
-# it doesn't work, check if it is set in the Gruntfile.
+# Gulp handles some Jekyll configuration. If you set something here and
+# it doesn't work, check if it is set in the Gulpfile.
 
-# Use _config.build.yml to override these settings on `grunt build`.
+# Use _config.build.yml to override these settings on `gulp build`.
 
 name: <%= appName %>
 description: <%= appName %>.
@@ -28,11 +28,11 @@ include: ['.htaccess']
 permalink: pretty
 
 # Publish posts with future date.
-# _config.build.yml sets this to false on `grunt build`
+# _config.build.yml sets this to false on `gulp build`
 future: true
 
 # Compile posts in the _drafts directory.
-# _config.build.yml sets this to false on `grunt build`
+# _config.build.yml sets this to false on `gulp build`
 show_drafts: false
 
 # Split posts over multiple subdirectories called “page2”, “page3”, … “pageN”
