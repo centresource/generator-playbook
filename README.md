@@ -10,7 +10,7 @@ Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll
 ### Prerequisites
 If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoman.io/) `>=1.1.2`, [Ruby](https://www.ruby-lang.org/en/) `>=2.0` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
 
-- [Node.js](http://davidcalhoun.me/2013/12/16/developer-tools-homebrew/)
+- [Node.js](https://nodejs.org)
 - [Yeoman](http://yeoman.io/learning/index.html)
 - [Ruby](https://rvm.io/rvm/install)
 - [Bundler](http://bundler.io/#getting-started)
@@ -20,18 +20,18 @@ If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoma
 npm install -g generator-playbook
 ````
 
-### Update
-If you already have generator-playbook installed, please upgrade before
-generating another site to get the latest updates.
+### Updates
+If you already have Playbook installed, please update before
+generating new projects to get the latest updates.
 
 ```bash
-npm list -g | grep 'generator-playbook' # See your installed version
-npm info generator-playbook | grep 'latest' # See latest generator-playbook version
-npm update -g generator-playbook # Upgrade generator-playbook globally
+npm list -g generator-playbook # See your installed version
+npm info generator-playbook dist-tags.latest # See the latest version
+npm update -g generator-playbook # Update Playbook globally
 ```
 
 ### Usage
-Playbook will run `bundle install`, so if you would like to install the Playbook gems into a gemset, set that up before running `yo playbook`.
+Playbook will run `bundle install`. If you would like to install the Playbook gems into a gemset, set that up before running `yo playbook`.
 
 ````bash
 mkdir project-name && cd project-name
