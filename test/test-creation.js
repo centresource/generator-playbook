@@ -30,7 +30,7 @@ describe('playbook', function () {
       '.csslintrc',
       '.bowerrc',
       'bower.json',
-      'Gruntfile.js',
+      'gulpfile.js',
       'package.json'
     ];
 
