@@ -1,6 +1,6 @@
 {
-  "name": "playbook-new",
-  "version": "0.0.0",
+  "name": "Playbook Site",
+  "private": true,
   "dependencies": {},
   "devDependencies": {
     "normalize-css": "~3.0.2",
