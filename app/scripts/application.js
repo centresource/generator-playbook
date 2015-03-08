@@ -13,8 +13,8 @@
   };
 
   CS.displayRelease = function () {
-    var $release = $('#release');
-    var request = $.get('https://api.github.com/repos/centresource/generator-playbook/tags');
+    var $release = $('#release'),
+        request  = $.get('https://api.github.com/repos/centresource/generator-playbook/tags');
 
     request.success(function (data) {
       $release.html(data[0].name);
@@ -27,7 +27,7 @@
   };
 
   $(document).ready(function () {
-    $('#go-to-about').on('click', CS.scrollToEl);
     CS.displayRelease();
+    $('#go-to-about').on('click', CS.scrollToEl);
   });
 })();
