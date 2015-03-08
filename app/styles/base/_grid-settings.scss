@@ -1,0 +1,14 @@
+$disable-warnings: true !global;
+
+// Neat Overrides
+///////////////////////////////////////////////////////////////////////////////
+// $column: 90px;
+// $gutter: 30px;
+// $grid-columns: 12;
+// $max-width: em(1088);
+
+// Neat Breakpoints
+///////////////////////////////////////////////////////////////////////////////
+$small: new-breakpoint(min-width em(540) 2);
+$medium: new-breakpoint(min-width em(760) 4);
+$large: new-breakpoint(min-width em(920) 8);

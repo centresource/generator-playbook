@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include shared/styles.html %}
+  </head>
+
+  <body class="{{ page.body_class }}">
+    <nav id="nav-external" class="nav-external">
+      <ul class="list-linear-pipes">
+        <li>
+          <a href="http://github.com/centresource/generator-playbook">GitHub</a>
+        </li><li>
+          <a href="http://centresource.com">Centresource</a>
+        </li>
+      </ul>
+    </nav>
+
+    {{ content }}
+
+    <footer id="footer-primary" class="footer-primary">
+      <p class="flush-bottom">made by</p>
+      <a href="http://centresource.com" class="logo-cs">Centresource</a>
+    </footer>
+
+    {% include shared/scripts.html %}
+    {% include shared/google-analytics.html %}
+  </body>
+</html>

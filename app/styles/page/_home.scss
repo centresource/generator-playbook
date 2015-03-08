@@ -1,0 +1,115 @@
+.home {
+  .welcome {
+    background: $blue;
+    box-shadow: inset 0 -3px 5px transparentize(black, 0.75);
+    color: white;
+    display: table;
+    height: 95vh;
+    padding: 3em 1em 5em 1em;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    h1 {
+      margin-bottom: 0.15em;
+    }
+
+    h4 {
+      color: white;
+      margin-bottom: 0.15em;
+    }
+
+    .version {
+      color: transparentize(white, 0.55);
+      font-size: em(12);
+    }
+
+    .btn-round {
+      bottom: 5vh;
+      left: 50%;
+      margin-left: em(-24);
+      position: absolute;
+
+      @include media($medium) {
+        bottom: 4vh;
+      }
+    }
+  }
+
+  .about,
+  .usage {
+    padding: 4em 1em;
+
+    @include media($medium) {
+      padding: 8em 1em;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .about {
+    text-align: center;
+
+    .tools {
+      @extend .list-unstyled;
+      margin: 0 auto 2.5em auto;
+      text-align: center;
+
+      > li {
+        display: block;
+        margin: 0.75em 0;
+        position: relative;
+
+        @include media($medium) {
+          display: inline-block;
+          margin: 0;
+          padding: 0 1em;
+          vertical-align: middle;
+        }
+
+        @include media($large) {
+          padding: 0 2em;
+        }
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+
+        &.plus {
+          color: $gray-light;
+          font-size: em(30);
+          padding: 0;
+        }
+      }
+
+      img {
+        vertical-align: middle;
+      }
+    }
+
+    p {
+      margin-right: auto;
+      margin-left: auto
+    }
+  }
+
+
+  .usage {
+    border-top: 1px solid $base-border-color;
+
+    .instructions {
+      @extend .wrap-skinny;
+      margin-bottom: 4em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

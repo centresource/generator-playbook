@@ -1,0 +1,28 @@
+// Apply CSS animation
+@mixin animate($animation: fadeIn, $duration: .75s, $delay: .5s, $timing-function: ease, $fill-mode: both) {
+  -webkit-animation-duration: $duration;
+  -webkit-animation-delay: $delay;
+  -webkit-animation-timing-function: $timing-function;
+  -webkit-animation-fill-mode: $fill-mode;
+  -webkit-animation-name: $animation;
+     -moz-animation-duration: $duration;
+     -moz-animation-delay: $delay;
+     -moz-animation-timing-function: $timing-function;
+     -moz-animation-fill-mode: $fill-mode;
+     -moz-animation-name: $animation;
+          animation-duration: $duration;
+          animation-delay: $delay;
+          animation-timing-function: $timing-function;
+          animation-fill-mode: $fill-mode;
+          animation-name: $animation;
+}
+
+
+// Alter CSS animate duration
+@mixin animation-duration($duration: 0.2s) {
+  -webkit-animation-duration: $duration;
+     -moz-animation-duration: $duration;
+      -ms-animation-duration: $duration;
+       -o-animation-duration: $duration;
+          animation-duration: $duration;
+}

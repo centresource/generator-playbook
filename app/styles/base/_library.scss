@@ -1,0 +1,42 @@
+.logo-cs {
+  @include hide-text;
+  @include transition(opacity $transition-duration linear);
+  background: url('../images/logo-cs.png') no-repeat 0 0;
+  display: inline-block;
+  height: 27px;
+  width: 207px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  @include hidpi(2) {
+    background-image: url('../images/logo-cs_2x.png');
+    background-size: 207px 27px;
+  }
+}
+
+.logo-playbook {
+  max-height: 74px;
+  max-width: 74px;
+}
+
+.logo-yeoman {
+  max-height: 119px;
+  max-width: 136px;
+}
+
+.logo-jekyll {
+  max-height: 101px;
+  max-width: 205px;
+}
+
+.logo-bourbon {
+  max-height: 41px;
+  max-width: 220px;
+}
+
+.centered {
+  display: table-cell;
+  vertical-align: middle;
+}

@@ -1,0 +1,49 @@
+# Base Jekyll configuration
+
+# Gulp handles some Jekyll configuration. If you set something here and
+# it doesn't work, check if it is set in the Gulpfile.
+
+# Use _config.build.yml to override these settings on `gulp build`.
+
+name: Playbook
+description: Prototype faster. Build faster.
+
+author:
+  name: David Calhoun
+  email: dpcalhoun@gmail.com
+
+# Exclude directories and/or files from the conversion.
+# Gulp moves styles, scripts, images and fonts directories.
+exclude: ['styles', 'scripts', 'images', 'fonts']
+keep_files: ['styles', 'scripts', 'images', 'fonts']
+
+# Force inclusion of directories and/or files in the conversion.
+# .htaccess is a good example since dotfiles are excluded by default.
+include: ['.htaccess']
+
+# Default post path style
+# date  /:categories/:year/:month/:day/:title.html
+# pretty  /:categories/:year/:month/:day/:title/
+# none  /:categories/:title.html
+permalink: pretty
+
+# Publish posts with future date.
+# _config.build.yml sets this to false on `gulp build`
+future: true
+
+# Compile posts in the _drafts directory.
+# _config.build.yml sets this to false on `gulp build`
+show_drafts: false
+
+# Split posts over multiple subdirectories called “page2”, “page3”, … “pageN”
+paginate: 10
+paginate_path: 'page:num'
+
+# Markdown library
+markdown: redcarpet
+# Markdown library options
+# redcarpet:
+  # extensions: ['fenced_code_blocks', 'smart']
+
+# Use Pygments to highlight code blocks
+highlighter: pygments

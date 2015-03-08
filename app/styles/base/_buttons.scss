@@ -1,0 +1,17 @@
+.btn-round {
+  @include transition-duration($transition-duration);
+  @include transition-property(background, box-shadow, color);
+  @include transition-timing-function(linear);
+  background: transparentize(white, 0.75);
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  line-height: 1.0;
+  padding: 1em;
+
+  &:hover {
+    background: white;
+    box-shadow: 0 3px 7px transparentize(black, 0.75);
+    color: $blue;
+  }
+}

@@ -1,0 +1,78 @@
+---
+layout: default
+title: 'Playbook | Prototype faster. Build faster.'
+body_class: 'home'
+---
+
+<section id="welcome" class="welcome">
+  <div class="centered">
+    <img src="{{ site.baseurl }}/images/logo-playbook_2x.png" alt="Playbook" class="logo-playbook" width="74" height="74">
+    <h1 class="mega">Playbook</h1>
+    <h4>Prototype <em>faster</em>. Build <em>faster</em>.</h4>
+    <span class="version">Currently <span id="release">&hellip;</span></span>
+  </div>
+
+  <a href="#about" id="go-to-about" class="btn-round">
+    <i class="fa fa-chevron-down"></i>
+  </a>
+</section>
+
+<section id="about" class="about">
+  <ul class="tools">
+    <li>
+      <a href="http://yeoman.io">
+        <img src="{{ site.baseurl }}/images/logo-yeoman_2x.png" alt="Yeoman" class="logo-yeoman">
+      </a>
+    </li>
+    <li class="plus">
+      <i class="fa fa-plus"></i>
+    </li>
+    <li>
+      <a href="http://jekyllrb.com">
+        <img src="{{ site.baseurl }}/images/logo-jekyll_2x.png" alt="Jekyll" class="logo-jekyll">
+      </a>
+    </li>
+    <li class="plus">
+      <i class="fa fa-plus"></i>
+    </li>
+    <li>
+      <a href="http://bourbon.io">
+        <img src="{{ site.baseurl }}/images/logo-bourbon_2x.png" alt="Bourbon" class="logo-bourbon">
+      </a>
+    </li>
+  </ul>
+
+
+  <p>Playbook is a Yeoman generator for prototyping and building experiences. <a href="http://jekyllrb.com/">Jekyll</a> is included for static site generation. <a href="http://bourbon.io/">Bourbon</a>, <a href="http://neat.bourbon.io/">Neat</a> &amp; <a href="http://bitters.bourbon.io/">Bitters</a> are included to help you write CSS faster.</p>
+</section>
+
+<section id="usage" class="usage">
+  <div class="instructions">
+    <h3>Prerequisites</h3>
+    <p>Playbook requires <a href="http://yeoman.io/">Yeoman</a>, <a href="https://www.ruby-lang.org/en/">Ruby</a> &amp; <a href="http://bundler.io/">Bundler</a>. If you are unfamiliar with Yeoman generators, we recommend <a href="http://yeoman.io/learning/">familiarizing yourself</a> first.</p>
+  </div>
+
+  <div class="instructions">
+    <h3>Installation</h3>
+    <pre><code class="language-bash">npm install -g generator-playbook</code></pre>
+  </div>
+
+  <div class="instructions">
+    <h3>Usage</h3>
+    <pre><code class="language-bash">mkdir project-directory &amp;&amp; cd project-directory
+yo playbook</code></pre>
+  </div>
+
+  <div class="instructions">
+    <h3>Gulp Tasks</h3>
+
+    <h4>gulp serve</h4>
+    <p>Serve your source locally into your browser. <a href="http://www.browsersync.io">BrowserSync</a> automatically loads any changes to HTML, CSS and JavaScript that you make.</p>
+
+    <h4>gulp build</h4>
+    <p>Build the concatenated, minified production version of your source into the <code>dist</code> directory.</p>
+
+    <h4>gulp deploy</h4>
+    <p>Deploy the production build of your source to <a href="http://pages.github.com/">GitHub Pages</a>.</p>
+  </div>
+</section>

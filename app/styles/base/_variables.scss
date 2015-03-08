@@ -1,0 +1,52 @@
+// Typography
+///////////////////////////////////////////////////////////////////////////////
+$sans-serif: 'Open Sans', $helvetica;
+$sans-serif-alt: 'Paytone One', $helvetica;
+$serif: $georgia;
+
+$base-font-family: $sans-serif;
+$header-font-family: $base-font-family;
+
+// Sizes
+///////////////////////////////////////////////////////////////////////////////
+$base-font-size: 1em;
+$base-line-height: $base-font-size * 1.5;
+$base-border-radius: em(3);
+
+// Colors
+///////////////////////////////////////////////////////////////////////////////
+// $gray-darker:            #222;
+$gray-darker:            #333;
+$gray-dark:              #999;
+$gray:                   #bdc3c7;
+$gray-light:             #DDD;
+$gray-lighter:           #ECF0F1;
+
+$blue-dark:              #2E3E4F;
+$blue:                   #477DCA;
+$green-dark:             #3D8C4D;
+$green:                  #4DC066;
+$green-light:            #E6EFC2;
+$red-light:              #FBE3E4;
+$yellow-light:           #FFF6BF;
+
+// Body Color
+$base-body-color: white;
+
+//  Font Colors
+$base-font-color: darken($gray-dark, 20%);
+$base-accent-color: $green-dark;
+
+//  Text Link Colors
+$base-link-color: $base-accent-color;
+$hover-link-color: darken($base-link-color, 20%);
+
+// Border color
+$base-border-color: darken(white, 10%);
+
+// Flash Colors
+$error-color: $red-light;
+$notice-color: $yellow-light;
+$success-color: $green-light;
+
+$transition-duration: 0.2s;
