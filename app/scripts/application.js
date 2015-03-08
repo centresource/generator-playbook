@@ -1,6 +1,6 @@
-'use strict';
+(function ($) {
+  'use strict';
 
-(function () {
   var CS = {};
 
   CS.scrollToEl = function (e) {
@@ -13,16 +13,15 @@
   };
 
   CS.displayRelease = function () {
-    var $release = $('#release'),
-        request  = $.get('https://api.github.com/repos/centresource/generator-playbook/tags');
+    var request = $.get('https://api.github.com/repos/centresource/generator-playbook/tags');
 
-    request.success(function (data) {
-      $release.html(data[0].name);
+    request.success(function (response) {
+      $('#release').html(response[0].name);
     });
 
     request.error(function () {
-      var template = 'available on <a href="https://www.github.com/centresource/generator-playbook/tags">Github</a>';
-      $release.html(template);
+      var template = '<a href="https://www.npmjs.com/package/generator-playbook">Available on npm</a>';
+      $('#version').html(template);
     });
   };
 
@@ -30,4 +29,4 @@
     CS.displayRelease();
     $('#go-to-about').on('click', CS.scrollToEl);
   });
-})();
+})(jQuery);

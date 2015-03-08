@@ -22,6 +22,14 @@
     .version {
       color: transparentize(white, 0.55);
       font-size: em(12);
+
+      a {
+        color: transparentize(white, 0.55);
+
+        &:hover {
+          color: transparentize(white, 0.3);
+        }
+      }
     }
 
     .btn-round {
