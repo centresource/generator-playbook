@@ -9,7 +9,7 @@
 
     $('html, body').animate({
       scrollTop: $(id).offset().top
-    }, 2000);
+    }, 600);
   };
 
   CS.displayRelease = function () {
