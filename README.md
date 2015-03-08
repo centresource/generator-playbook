@@ -1,6 +1,6 @@
-# playbook-new
+# Playbook
 
-A Playbook project.
+Marketing site for the Playbook project.
 
 ## Project Setup
 This project utilizes Playbook, reference Playbook's [setup guide](https://github.com/centresource/generator-playbook#get-started).
