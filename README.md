@@ -1,7 +1,4 @@
-# Playbook
-
-[![Circle
-CI](https://circleci.com/gh/centresource/generator-playbook.svg?style=svg)](https://circleci.com/gh/centresource/generator-playbook)
+# Playbook [![CircleCI](https://circleci.com/gh/centresource/generator-playbook.svg?style=svg)](https://circleci.com/gh/centresource/generator-playbook)
 
 Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
 
