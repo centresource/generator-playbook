@@ -27,7 +27,6 @@ describe('playbook', function () {
       '.jshintrc',
       '.gitignore',
       '.editorconfig',
-      '.csslintrc',
       '.bowerrc',
       'bower.json',
       'gulpfile.js',
