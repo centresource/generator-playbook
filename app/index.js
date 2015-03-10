@@ -161,7 +161,6 @@ PlaybookGenerator.prototype.rubyDependencies = function rubyDependencies() {
 PlaybookGenerator.prototype.app = function app() {
   this.directory('app', 'app');
   this.copy('bowerrc', '.bowerrc');
-  this.copy('csslintrc', '.csslintrc');
   this.copy('gitignore', '.gitignore');
   this.copy('bower.json', 'bower.json');
   this.template('README.md', 'README.md');
