@@ -52,7 +52,7 @@ gulp.task('styles', function () {<% if (sassComp === 'libsass') { %>
 
 gulp.task('scripts', function () {
   return gulp.src(paths.scripts)<% if (jsPre === 'coffeescript') { %>
-    .pipe($.coffee()).on('error', function(err) {})<% } %>
+    .pipe($.coffee()).on('error', function(err) { console.log('Script error: ', err); this.emit('end'); })<% } %>
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('default'))
     .pipe(gulp.dest('.tmp/scripts'))
