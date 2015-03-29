@@ -20,7 +20,7 @@
     "coffeescript",
     "libsass"
   ],
-  "homepage": "http://centresource.github.io/generator-playbook/",
+  "homepage": "http://playbook.centresource.com",
   "bugs": "https://github.com/centresource/generator-playbook/issues",
   "author": {
     "name": "David Calhoun",
