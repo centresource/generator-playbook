@@ -37,8 +37,8 @@ The resulting Playbook generator will be referencing your local copy of the Play
 
 
 ### Tagging and Publishing Releases
-1. Update the [package version](https://github.com/centresource/generator-playbook/blob/master/package.json#L3) in `package.json`. This should match the version number that you are publishing to [npmjs.org](https://www.npmjs.org/package/generator-playbook).
-2. Commit your version bump: `git commit -am "Version bump."`
+1. Update the [package version](https://github.com/centresource/generator-playbook/blob/master/package.json#L3) in `package.json`. This should match the version number that you intend to publish to [npmjs.org](https://www.npmjs.org/package/generator-playbook).
+2. Commit your version bump: `git commit -am "Prepare #.#.# release"`
 3. Create an [annoted git tag](http://git-scm.com/book/en/Git-Basics-Tagging#Annotated-Tags) for the release: `git tag -a v#.#.# -m "Version #.#.#"`
 4. Push master/tags: `git push origin master --tags`
 5. Publish to npm: `npm publish`
