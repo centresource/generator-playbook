@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 var production = false,
     paths = {
       app:     'app',
-      html:    'app/**/*.html',
+      html:    'app/**/*.{html,md}',
       styles:  'app/styles/**/*.scss',<% if (jsPre === 'coffeescript') { %>
       scripts: 'app/scripts/**/*.coffee',<% } else { %>
       scripts: 'app/scripts/**/*.js',<% } %>
