@@ -5,11 +5,10 @@ Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll
 [Gulp](http://gulpjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
 
 ### Prerequisites
-If you do not have [Node.js](http://nodejs.org/) `>=0.10`, [Yeoman](http://yeoman.io/) `>=1.1.2`, [Ruby](https://www.ruby-lang.org/en/) `>=2.0` and the [Bundler](http://bundler.io/) gem installed, you must do that first:
-
-- [Node.js](https://nodejs.org)
-- [Yeoman](http://yeoman.io/learning/index.html)
-- [Ruby](https://rvm.io/rvm/install)
+- [Node.js](https://nodejs.org) `>=0.10`
+- [Yeoman](http://yeoman.io/learning/index.html) `>=1.1.2`
+- [Gulp.js](http://gulpjs.com) `>3.8.11`
+- [Ruby](https://rvm.io/rvm/install) `>=2.0`
 - [Bundler](http://bundler.io/#getting-started)
 
 ### Installation
