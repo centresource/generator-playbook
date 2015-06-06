@@ -7,7 +7,7 @@ Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll
 ### Prerequisites
 - [Node.js](https://nodejs.org) `>=0.10`
 - [Yeoman](http://yeoman.io/learning/index.html) `>=1.1.2`
-- [Gulp.js](http://gulpjs.com) `>3.8.11`
+- [Gulp.js](http://gulpjs.com) `>=3.8.11`
 - [Ruby](https://rvm.io/rvm/install) `>=2.0`
 - [Bundler](http://bundler.io/#getting-started)
 
