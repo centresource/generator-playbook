@@ -5,7 +5,7 @@
 
 # Use _config.build.yml to override these settings on `gulp build`.
 
-name: <%= appName %>
+title: <%= appName %>
 description: <%= appName %>.
 
 author:
