@@ -39,9 +39,8 @@ show_drafts: false
 paginate: 10
 paginate_path: 'page:num'
 
-# Markdown library
+# Markdown library & options
 markdown: redcarpet
-# Markdown library options
 # redcarpet:
   # extensions: ['fenced_code_blocks', 'smart']
 
