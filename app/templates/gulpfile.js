@@ -123,7 +123,6 @@ gulp.task('watch', function () {
   gulp.watch(paths.html,    ['html']);
   gulp.watch(paths.styles,  ['styles']);
   gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images,  ['images']);
   gulp.watch(paths.fonts,   ['fonts']);
 });
 
