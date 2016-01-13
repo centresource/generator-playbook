@@ -17,8 +17,12 @@ var production = false,
       scripts: 'app/scripts/**/*.js',<% } %>
       images:  'app/images/**/*.{png,gif,jpg,jpeg,svg}',
       fonts:   'app/fonts/**/*.{eot*,otf,svg,ttf,woff}',
-      vendor:  'vendor'
+      vendor:  'vendor',
+      styleguide: 'app/_components/**/*',
+      colors: 'app/_colors/**/*'
     };
+
+var replace = require('gulp-replace');
 
 gulp.task('html', function (cb) {
   var config = (production) ? '_config.yml,_config.build.yml' : '_config.yml',
