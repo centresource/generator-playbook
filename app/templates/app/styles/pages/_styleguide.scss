@@ -1,0 +1,113 @@
+/* ==========================================================================
+   WEBSITE STYLE GUIDE
+   ========================================================================== */
+
+// Global
+.styleguide {
+	#main {
+		@include outer-container;
+		margin: 4em auto;
+	}
+}
+
+// Component
+.component {
+	background-color: $base-background-color;
+  border: 1px solid $base-border-color;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.component__header {
+  h3 {
+    margin-top: 0 !important;
+  }
+
+  p {
+  	font-size: 0.8rem;
+    margin-top: 0;
+    
+    a {
+      border-bottom-width: 0;
+    }
+
+    &.entry--last {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.component__rendered {
+  &--color {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include breakpoint($medium-screen) {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.component__code {
+  clear: both;
+  padding-top: 3em;
+  position: relative;
+
+  &:before {
+    content: "HTML";
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    text-transform: uppercase;
+    top: 1.5em;
+  }
+}
+
+.highlight {
+  border: 1px solid $base-border-color;
+  padding: 2%;
+}
+
+/*
+   Color swatches
+   ========================================================================== */
+
+.color__tile {
+	align-items: center;
+	border: 1px solid $base-border-color;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+  width: 98%;
+}
+
+.color__name {
+	background-color: $medium-gray;
+	border: 1px solid $base-border-color;
+	color:$base-background-color;
+  font-size: 0.74rem;
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: normal;
+}
+
+/*
+   Background colors
+   ========================================================================== */
+
+$color:
+(base-background-color, $base-background-color),
+(light-gray, $light-gray),
+(medium-gray, $medium-gray),
+(dark-gray, $dark-gray),
+("blue", $blue);
+
+@each $name, $bgcolor in $color {
+  .color__tile--#{$name} {
+    background-color: $bgcolor;
+  }
+}
