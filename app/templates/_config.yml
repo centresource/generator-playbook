@@ -47,9 +47,11 @@ markdown: redcarpet
 # Use Pygments to highlight code blocks
 highlighter: pygments
 
-# Collections for styleguide
+<% if (styleguide) { %>
+# Collections for styleguide (optional)
 collections:
   components:
     output: false
   colors:
     output: false
+<% } %>

@@ -1,7 +1,7 @@
 ---
 layout: style_guide
 title: "Style Guide"
-excerpt: "A handy collection of all the colors, typography, UI patterns, and components used on Made Mistakes."
+excerpt: "An automated styleguide for colors, typography and UI patterns."
 body_class: 'styleguide'
 ---
 
@@ -28,8 +28,8 @@ body_class: 'styleguide'
   {% include component-color.html %}
 {% endfor %}
 {% for type in componentsByType %}
-<h2 id="guide-{{ type.name }}" class="cf">{{ type.name | capitalize }}</h2>
-{% for entry in type.items %}
-{% include component.html %}
-{% endfor %}
+	<h2 id="guide-{{ type.name }}" class="cf">{{ type.name | capitalize }}</h2>
+	{% for entry in type.items %}
+		{% include component.html %}
+	{% endfor %}
 {% endfor %}

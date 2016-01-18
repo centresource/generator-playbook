@@ -3,5 +3,7 @@
 @import 'neat';
 @import 'global';
 
+<% if (styleguide) { %>
 // Pages
 @import 'pages/styleguide';
+<% } %>
