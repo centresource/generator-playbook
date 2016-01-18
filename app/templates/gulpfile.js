@@ -140,8 +140,8 @@ gulp.task('browser-sync', ['html', 'styles', 'scripts'], function () {
     }
   });
 });
-
 <% if (styleguide) { %>
+
 gulp.task('copy-styleguide', function() {
   gulp.src(paths.styleguide)
   	.pipe($.replace(/---(.|\n)*---/, ''))
