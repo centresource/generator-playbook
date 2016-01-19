@@ -87,6 +87,12 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
           type: 'confirm',
           message: 'Include Google Analytics?',
           default: false
+        },
+        {
+          name: 'styleguide',
+          type: 'confirm',
+          message: 'Include Automated Styleguide?',
+          default: false
         }
       ];
 
@@ -96,6 +102,7 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
     this.jsPre           = props.jsPre === 'None' ? false : props.jsPre.toLowerCase();
     this.sassComp        = props.sassComp.toLowerCase();
     this.googleAnalytics = props.googleAnalytics;
+    this.styleguide 		 = props.styleguide;
 
     cb();
   }.bind(this));
@@ -180,6 +187,15 @@ PlaybookGenerator.prototype.templates = function templates() {
 
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/shared/google-analytics.html');
+  }
+  if (this.styleguide) {
+  	this.directory('conditional/template/_components', 'app/_components');
+  	this.directory('conditional/template/_colors', 'app/_colors');
+  	this.directory('conditional/styles/pages', 'app/styles/pages');
+    this.copy('conditional/template/styleguide.html', 'app/styleguide.html');
+    this.copy('conditional/template/style_guide.html', 'app/_layouts/style_guide.html');
+    this.copy('conditional/template/component.html', 'app/_includes/component.html');
+    this.copy('conditional/template/component-color.html', 'app/_includes/component-color.html');
   }
 };
 
