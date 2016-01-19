@@ -8,6 +8,19 @@ body_class: 'styleguide'
 {% assign entries = site.colors %}
 {% assign componentsByType = site.components | group_by:"type" %}
 
+<div class="remove-as-needed">
+	<hr id="how-to">
+  <br><h1>How do I use the styleguide?</h1><br>
+  <strong>Add components in app/_components</strong><br>
+  <span>Use Front Matter to organize them (see app/_components/typography.html).</span><br>
+  <span>Use as includes anywhere in your project <code><span>{</span>% include FILENAME.html %<span>}</span></code>.</span><br><br>
+  <strong>Add colors in app/_colors</strong><br>
+  <span>Include your colors in the $colors loop in app/styles/pages/_styleguide.scss.</span><br>
+  <span>Coordinate class names (color__tile--NEWCOLOR) in app/_colors html files.</span><br><br>
+  <h2>That's it.</h2>
+  <hr>
+</div>
+
 <nav id="component-selector" class="wrap">
   <form>
     <select name="newurl" id="component-select" onChange="window.location.replace(this.options[this.selectedIndex].value)">
