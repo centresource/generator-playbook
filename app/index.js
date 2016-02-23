@@ -192,10 +192,14 @@ PlaybookGenerator.prototype.templates = function templates() {
   	this.directory('conditional/template/_components', 'app/_components');
   	this.directory('conditional/template/_colors', 'app/_colors');
   	this.directory('conditional/styles/pages', 'app/styles/pages');
+    this.directory('conditional/styles/components', 'app/styles/components');
+    this.directory('conditional/javascript/components', 'app/scripts/components');
     this.copy('conditional/template/styleguide.html', 'app/styleguide.html');
     this.copy('conditional/template/style_guide.html', 'app/_layouts/style_guide.html');
     this.copy('conditional/template/component.html', 'app/_includes/component.html');
     this.copy('conditional/template/component-color.html', 'app/_includes/component-color.html');
+    this.copy('conditional/template/styleguide-scripts.html', 'app/_includes/shared/styleguide-scripts.html');
+    this.copy('conditional/javascript/styleguide.js', 'app/scripts/styleguide.js');
   }
 };
 

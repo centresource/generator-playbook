@@ -1,103 +1,142 @@
 /* ==========================================================================
-	 WEBSITE STYLE GUIDE
-	 ========================================================================== */
+   WEBSITE STYLE GUIDE
+   ========================================================================== */
 
 // Global
-.styleguide {
-	.wrap {
-		@include outer-container;
-		margin: 4em auto;
-	}
+.styleguide-info {
+  background-color:$dark-gray;
+  color: $medium-gray;
+  padding-bottom: 3em;
+
+  @include media($large-screen) {
+    @include position(fixed, 0 null null 0);
+    @include span-columns(3.2);
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  header {
+    @include clearfix;
+    padding:3em 3em 1em;
+  }
+
+  h1, h3 {
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  h1, h2 {
+    @include media($medium-screen) {
+      clear: left;
+      float: left;
+    }
+  }
+
+  h2 {
+    font-weight: normal;
+  }
+
+  h3 {
+    margin: 2em 0 0;
+
+    @include media($large-screen) {
+      padding:0 3em;
+      margin: 2em 0 .75em;
+    }
+  }
+}
+
+.styleguide-content {
+  padding: 3em 2em;
+
+  @include media($large-screen) {
+    @include span-columns(7.8);
+    @include shift(3.2);
+  }
+
+  > h2 {
+    border-bottom: 1px solid;
+    color: $dark-gray;
+    font-size: 1.6em;
+    font-weight: normal;
+    line-height: 2em;
+    margin-top: 2em;
+  }
 }
 
 // Component
 .component {
-	background-color: $base-background-color;
-	border: 1px solid $base-border-color;
-	margin-bottom: 1em;
-	padding: 1em;
+  background-color: $base-background-color;
+  margin: 2em 0;
+  padding-bottom: 1em;
 }
 
 .component__header {
-	h3 {
-		margin-top: 0 !important;
-	}
+  h3 {
+    font-size: 1.2em;
+  }
 
-	p {
-		font-size: 0.8rem;
-		margin-top: 0;
-		
-		a {
-			border-bottom-width: 0;
-		}
+  p {
+    font-size: 0.8rem;
+    margin-top: 0;
+    
+    a {
+      border-bottom-width: 0;
+    }
 
-		&.entry--last {
-			margin-bottom: 1em;
-		}
-	}
+    &.entry--last {
+      margin-bottom: 1em;
+    }
+  }
 }
 
 .component__rendered {
-	&--color {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+  &--color {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-		@include breakpoint($medium-screen) {
-			flex-wrap: nowrap;
-		}
-	}
+    @include media($medium-screen) {
+      flex-wrap: nowrap;
+    }
+  }
 }
 
 .component__code {
-	clear: both;
-	padding-top: 3em;
-	position: relative;
-
-	&::before {
-		content: "HTML";
-		font-size: 0.8rem;
-		font-weight: bold;
-		position: absolute;
-		text-transform: uppercase;
-		top: 1.5em;
-	}
-}
-
-.highlight {
-	border: 1px solid $base-border-color;
-	padding: 2%;
+  clear: both;
+  padding-top: 3em;
+  position: relative;
 }
 
 /*
-	 Color swatches
-	 ========================================================================== */
+   Color swatches
+   ========================================================================== */
 
 .color__tile {
-	align-items: center;
-	border: 1px solid $base-border-color;
-	display: flex;
-	height: 100px;
-	justify-content: center;
-	margin-top: 1%;
-	margin-bottom: 1%;
-	text-align: center;
-	width: 98%;
+  align-items: center;
+  border: 1px solid $base-border-color;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+  width: 98%;
 }
 
 .color__name {
-	background-color: $medium-gray;
-	border: 1px solid $base-border-color;
-	color:$base-background-color;
-	font-size: 0.74rem;
-	margin: 0 2px;
-	padding: 0 5px;
-	white-space: normal;
+  background-color: $medium-gray;
+  border: 1px solid $base-border-color;
+  color:$base-background-color;
+  font-size: 0.74rem;
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: normal;
 }
 
 /*
-	 Background colors
-	 ========================================================================== */
+   Background colors
+   ========================================================================== */
 
 $color:
 (base-background-color, $base-background-color),
@@ -107,7 +146,7 @@ $color:
 ("blue", $blue);
 
 @each $name, $bgcolor in $color {
-	.color__tile--#{$name} {
-		background-color: $bgcolor;
-	}
+  .color__tile--#{$name} {
+    background-color: $bgcolor;
+  }
 }

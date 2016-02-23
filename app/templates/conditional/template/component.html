@@ -6,16 +6,20 @@
       {% if entry.scss %}<p class="entry--last"><strong>SCSS partial:</strong> <a href="{{ site.owner.github-repo }}{{ entry.scss }}">{{ entry.scss }}</a></p>{% endif %}
   </header>
 
-  <div class="component__content">
-    <div class="component__rendered">
-      {{ entry.content }}
-    </div>
-    <div class="component__code">
-
-      {% highlight html %}
+  <ul class="component__content accordion-tabs-minimal">
+    <li class="tab-header-and-content component__rendered">
+      <a href="#" class="tab-link is-active">Preview</a>
+      <div class="tab-content">
         {{ entry.content }}
-      {% endhighlight %}
-
-    </div>
-  </div>
+      </div>
+    </li>
+    <li class="tab-header-and-content component__code">
+      <a href="#" class="tab-link">Markup</a>
+      <div class="tab-content">
+        {% highlight html %}
+          {{ entry.content }}
+        {% endhighlight %}
+      </div>
+    </li>
+  </ul>
 </article>

@@ -2,8 +2,12 @@
 @import 'base/base';
 @import 'neat';
 @import 'global';
-
 <% if (styleguide) { %>
+
 // Pages
 @import 'pages/styleguide';
+
+// Components
+@import 'components/nav';
+@import 'components/tabs';
 <% } %>
