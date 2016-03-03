@@ -1,6 +1,6 @@
 {
   "name": "generator-playbook",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A Yeoman generator for prototyping and building experiences.",
   "keywords": [
     "yeoman-generator",
