@@ -1,6 +1,6 @@
 ---
 layout: style_guide
-title: "Style Guide"
+title: "Living Styleguide"
 excerpt: "An automated styleguide for colors, typography and UI patterns."
 body_class: 'styleguide'
 ---
@@ -8,41 +8,68 @@ body_class: 'styleguide'
 {% assign entries = site.colors %}
 {% assign componentsByType = site.components | group_by:"type" %}
 
-<div class="remove-as-needed">
-	<hr id="how-to">
-  <br><h1>How do I use the styleguide?</h1><br>
-  <strong>Add components in app/_components</strong><br>
-  <span>Use Front Matter to organize them (see app/_components/typography.html).</span><br>
-  <span>Use as includes anywhere in your project <code><span>{</span>% include FILENAME.html %<span>}</span></code>.</span><br><br>
-  <strong>Add colors in app/_colors</strong><br>
-  <span>Include your colors in the $colors loop in app/styles/pages/_styleguide.scss.</span><br>
-  <span>Coordinate class names (color__tile--NEWCOLOR) in app/_colors html files.</span><br><br>
-  <h2>That's it.</h2>
-  <hr>
-</div>
+<section class="styleguide-info">
+  <header>
+    <h1>{{ page.title }}</h1>
+    <h2>The color &amp; pattern styleguide for the application</h2>
+    <button type="button" class="js-menu-trigger sliding-panel-button">Menu</button>
+  </header>
+  <nav id="component-selector" class="wrap sliding-panel-content">
+    <ul>
+      <li>
+        <h3><a href="#guide-color-palettes">Colors</a></h3>
+        <ul>
+          <li>
+            <a href="#guide-brand-colors">Brand Colors</a>
+          </li>
+          <li>
+            <a href="#guide-neutral-colors">Neutral Colors</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
-<nav id="component-selector" class="wrap">
-  <form>
-    <select name="newurl" id="component-select" onChange="window.location.replace(this.options[this.selectedIndex].value)">
-      <option value="">Select a Component</option>
-      <option value="#guide-color-palettes">Colors</option>
+    <ul>
       {% for type in componentsByType %}
-      <option value="#guide-{{ type.name }}">{{ type.name | capitalize }}</option>
-      {% for entry in type.items %}
-      <option value="#guide-{{ entry.title | slugify }}">&nbsp;&nbsp;&nbsp;{{ entry.title }}</option>
+      <li>
+        <h3><a href="#guide-{{ type.name }}">{{ type.name | capitalize }}</a></h3>
+        <ul>
+        {% for entry in type.items %}
+          <li>
+            <a href="#guide-{{ entry.title | slugify }}">{{ entry.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
       {% endfor %}
-      {% endfor %}
-    </select>
-  </form>
-</nav>
+    </li>
+    </ul>
+  </nav>
 
-<h2 id="guide-color-palettes" class="cf">Colors</h2>
-{% for entry in entries %}
-  {% include component-color.html %}
-{% endfor %}
-{% for type in componentsByType %}
-	<h2 id="guide-{{ type.name }}" class="cf">{{ type.name | capitalize }}</h2>
-	{% for entry in type.items %}
-		{% include component.html %}
-	{% endfor %}
-{% endfor %}
+  <div class="js-menu-screen sliding-panel-fade-screen"></div>
+</section>
+
+<section class="styleguide-content">
+  <div class="remove-as-needed">
+    <hr id="how-to">
+    <br><h1>How do I use the styleguide?</h1><br>
+    <strong>Add components in app/_components</strong><br>
+    <span>Use Front Matter to organize them (see files in app/_components).</span><br>
+    <span>Use as includes anywhere in your project <code><span>{</span>% include FILENAME.html %<span>}</span></code>.</span><br><br>
+    <strong>Add colors in app/_colors</strong><br>
+    <span>Include your colors in the $colors loop in app/styles/pages/_styleguide.scss.</span><br>
+    <span>Coordinate class names (color__tile--NEWCOLOR) in app/_colors html files.</span><br><br>
+    <h2>That's it.</h2>
+    <hr>
+  </div>
+  
+  <h2 id="guide-color-palettes" class="cf">Colors</h2>
+  {% for entry in entries %}
+    {% include component-color.html %}
+  {% endfor %}
+  {% for type in componentsByType %}
+    <h2 id="guide-{{ type.name }}" class="cf">{{ type.name | capitalize }}</h2>
+    {% for entry in type.items %}
+      {% include component.html %}
+    {% endfor %}
+  {% endfor %}
+</section>

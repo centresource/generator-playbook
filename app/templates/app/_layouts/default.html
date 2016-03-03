@@ -17,7 +17,7 @@
   <body class="{{ page.body_class }}">
     {{ content }}
 
-    {% include shared/scripts.html %}<% if (googleAnalytics) { %>
+    <% if (styleguide) { %>{% if page.body_class == 'styleguide' %}{% include shared/styleguide-scripts.html %}{% else %}{% include shared/scripts.html %}{% endif %}<% } else { %>{% include shared/scripts.html %}<% } %><% if (googleAnalytics) { %>
     {% include shared/google-analytics.html %}<% } %>
   </body>
 </html>

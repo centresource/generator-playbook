@@ -1,0 +1,123 @@
+// Mobile Navigation (from http://refills.bourbon.io/components/#sliding-panel)
+
+.sliding-panel-content {  
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $sliding-panel-border-color: $dark-gray;
+  $sliding-panel-background: lighten($sliding-panel-border-color, 5%);
+  $sliding-panel-color: #fff;
+  $sliding-panel-border: 1px solid $sliding-panel-border-color;
+  $sliding-panel-background-hover: $action-color;
+  $sliding-panel-color-hover: #fff;
+  $sliding-panel-background-focus: lighten($sliding-panel-background, 5%);
+
+  @include position(fixed, 0px auto 0px 0px);
+  @include size(220px 100%);
+  @include transform(translateX(-220px));
+  @include transition(all 0.25s linear);
+  background: $sliding-panel-background;
+  z-index: 999999;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include media($large-screen) {
+    @include size(auto 100%);
+    @include transform(none);
+    background: none;
+    overflow-y: initial;
+    position: static;
+    z-index: 0;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  li a {
+    border-bottom: $sliding-panel-border;
+    color: $sliding-panel-color;
+    display: block;
+    font-weight: bold;
+    padding: 1em;
+    text-decoration: none;
+  }
+
+  li {
+    & > a {
+      @include media($large-screen) {
+        border-bottom:1px solid tint($dark-gray, 5%);
+        color: #fff;
+        display: block;
+        font-size: .9em;
+        padding: .8em 3.4em;
+
+        &:hover {
+          color: $light-gray;
+        }
+      }
+    }
+
+    &:first-child > a {
+      padding-top:0;
+    }
+  }
+
+  li h3 a {
+    border-bottom:none;
+    color: $medium-gray;
+
+    @include media($large-screen) {
+      padding:0;
+    }
+
+    &:hover {
+      color: $light-gray;
+    }
+  }
+
+  &.is-visible {
+    @include transform(translateX(0));
+  }
+}
+
+.sliding-panel-fade-screen {
+  @include position(fixed, 0px 0px 0px 0px);
+  @include transition;
+  background: black;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999998;
+
+  &.is-visible {
+    opacity: 0.4;
+    visibility: visible;
+  }
+}
+
+.sliding-panel-button {
+  margin-top:1em;
+  padding: 10px 16px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+
+  @include media($medium-screen) {
+    float: right;
+  }
+
+  img {
+    height: 1.3em;
+  }
+
+  @include media($large-screen) {
+    display: none;
+  }
+}
+
+// Based on code by Diego Eis
