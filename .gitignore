@@ -10,6 +10,7 @@ test/temp
 
 # Ignore for Yeoman-Jekyll projects #
 app/*bower_components
+app/templates/npm-debug.log
 vendor
 dist
 node_modules
