@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     runSequence = require('run-sequence'),
     del = require('del'),
-    neat = require('node-neat').includePaths;
+    neat = require('node-neat').includePaths,
+    cleanCSS = require('gulp-clean-css');
 
 var production = false,
     paths = {
@@ -85,7 +86,7 @@ gulp.task('optimize', ['html', 'styles', 'scripts', 'images', 'fonts'], function
 
   return gulp.src('dist/**/*.html')
     .pipe(assets)
-    .pipe($.if('*.css', $.minifyCss()))
+    .pipe($.if('*.css', cleanCSS()))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.rev())
     .pipe(assets.restore())
