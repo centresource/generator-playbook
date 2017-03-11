@@ -18,7 +18,9 @@
     "prototyping",
     "sass",
     "coffeescript",
-    "libsass"
+    "libsass",
+    "es6",
+    "babel"
   ],
   "homepage": "http://playbook.centresource.com",
   "bugs": "https://github.com/centresource/generator-playbook/issues",

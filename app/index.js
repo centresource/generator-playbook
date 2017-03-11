@@ -73,8 +73,8 @@ PlaybookGenerator.prototype.askForTools = function askForTools() {
         {
           name: 'jsPre',
           type: 'list',
-          message: 'JavaScript preproccesor',
-          choices: ['None', 'CoffeeScript']
+          message: 'JavaScript options',
+          choices: ['None', 'ES6', 'CoffeeScript']
         },
         {
           name: 'sassComp',
@@ -167,6 +167,11 @@ PlaybookGenerator.prototype.rubyDependencies = function rubyDependencies() {
 
 PlaybookGenerator.prototype.app = function app() {
   this.directory('app', 'app');
+
+  if (this.jsPre === 'es6') {
+    this.copy('babelrc', '.babelrc');
+  }
+
   this.copy('bowerrc', '.bowerrc');
   this.copy('gitignore', '.gitignore');
   this.copy('bower.json', 'bower.json');
@@ -185,9 +190,15 @@ PlaybookGenerator.prototype.projectfiles = function projectfiles() {
 PlaybookGenerator.prototype.templates = function templates() {
   this.template('app/_layouts/default.html', 'app/_layouts/default.html');
 
+  if (this.jsPre === 'es6') {
+    this.template('conditional/template/shared/scripts.html', 'app/_includes/shared/scripts.html');
+    this.conflicter.force = true; // force overwrite of existing /shared/scripts.html file
+  }
+
   if (this.googleAnalytics) {
     this.copy('conditional/template/google-analytics.html', 'app/_includes/shared/google-analytics.html');
   }
+
   if (this.styleguide) {
   	this.directory('conditional/template/_components', 'app/_components');
   	this.directory('conditional/template/_colors', 'app/_colors');

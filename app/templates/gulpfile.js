@@ -7,7 +7,12 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     del = require('del'),
     neat = require('node-neat').includePaths,
-    cleanCSS = require('gulp-clean-css');
+    cleanCSS = require('gulp-clean-css')<% if (jsPre === 'es6') { %>,
+    browserify = require('browserify'),
+    babelify = require('babelify'),
+    source = require('vinyl-source-stream'),
+    glob = require('glob'),
+    eventStream  = require('event-stream')<% } %>;
 
 var production = false,
     paths = {
@@ -53,13 +58,24 @@ gulp.task('styles', function () {<% if (sassComp === 'libsass') { %>
     .pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('scripts', function () {
+gulp.task('scripts', function (done) {<% if (jsPre === 'es6') { %>
+  glob(paths.scripts, function(err, files) {
+    var tasks = files.map(function(entry) {
+      return browserify({ entries: [entry] })
+        .transform('babelify', { presets: ['env'] })
+        .bundle()
+        .pipe(source('application.js'))
+        .pipe(gulp.dest('.tmp/scripts'))
+        .pipe(browserSync.reload({ stream: true }));
+      });
+    eventStream.merge(tasks).on('end', done);
+  });<% } else if (jsPre != 'es6') { %>
   return gulp.src(paths.scripts)<% if (jsPre === 'coffeescript') { %>
     .pipe($.coffee()).on('error', function(err) { console.log('Script error: ', err); this.emit('end'); })<% } %>
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('default'))
     .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({ stream: true }));<% } %>
 });
 
 gulp.task('images', function () {
@@ -98,7 +114,7 @@ gulp.task('optimize', ['html', 'styles', 'scripts', 'images', 'fonts'], function
 <% if (ghPages && ghPagesType === 'project') { %>
 // Update absolute asset paths for GitHub Pages subdirectory
 gulp.task('replace', ['optimize'], function () {
-  var ghPages = '$1http://<%= ghOwner %>.github.io/<%= ghRepo %>';
+  var ghPages = '$1https://<%= ghOwner %>.github.io/<%= ghRepo %>';
 
   return gulp.src('dist/**/*.html')
     .pipe($.replace(/("|'?)\/?styles\//g,  ghPages + '/styles/'))
