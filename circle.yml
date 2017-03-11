@@ -9,3 +9,5 @@ machine:
     version: 0.8
     version: 0.10
     version: 0.11
+  ruby:
+    version: 2.3.1
