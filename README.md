@@ -2,7 +2,7 @@
 
 Playbook is a Yeoman generator for prototyping and building experiences. [Jekyll](http://jekyllrb.com/) is included for static site generation. [Bourbon](http://bourbon.io), [Neat](http://neat.bourbon.io) & [Bitters](http://bitters.bourbon.io/) are included to help you write CSS faster.
 
-[Gulp](http://gulpjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies.
+[Gulp](http://gulpjs.com/) is used for compilation of [Sass](http://sass-lang.com) and [CoffeeScript](http://coffeescript.org) (optional). [Bower](http://bower.io/) is used for managing dependencies or [Browserify](http://browserify.org) for node modules with ES6 (optional).
 
 ### Prerequisites
 - [Node.js](https://nodejs.org) `>=0.10.0`
